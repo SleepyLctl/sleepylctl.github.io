@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Modules</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Section 1: Brand Introduction -->
+    <section id="brand-introduction" class="d-flex">
+        <div class="half left">
+            <h2>AI & No Code</h2>
+            <p>Empower your skills with AI and No Code solutions.</p>
+        </div>
+        <div class="half right">
+            <h2>Cybersecurity</h2>
+            <p>Protect your digital assets with our cybersecurity training.</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Training Calculator -->
+    <section id="training-calculator">
+    <div class="container">
+        <h2>Training Calculator</h2>
+        <div>
+            <select id="recommendationDropdown" class="form-control mb-3" onchange="updateRecommendations()">
+                <option value="">Select a Learning Path</option>
+                <option value="it">Basic Cyber Security for IT</option>
+                <option value="office">Basic Cyber Security for Office Workers</option>
+                <option value="dev">Basic Cyber Security for Developers</option>
+                <option value="secureDev">Secure Development for Developers</option>
+            </select>
+            <button id="addRecommendationButton" class="btn btn-primary mb-3">Add to Learning</button>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Modules</h3>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Basics of Cybersecurity
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <table id="fundamentalsTable" class="table table-sm"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Advanced Cyber Security
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <table id="cybersecurityTable" class="table table-sm"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    AI & No Code
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <table id="emergingTechTable" class="table table-sm"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Your Custom Training</h3>
+                <div id="customTraining"></div>
+                <div id="costInfo"></div>
+                <form id="orderForm" onsubmit="confirmOrder(event)">
+                    <label for="participants">Number of Participants:</label>
+                    <input type="number" id="participants" name="participants" class="form-control" max="8" required><br>
+                    <label><input type="checkbox" id="bigGroupTraining" onchange="toggleBigGroup()"> Big Group Training (Price is doubled, max 24 participants)</label><br>
+                    <label for="customer">Customer:</label>
+                    <input type="text" id="customer" name="customer" class="form-control" required><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" required><br>
+                    <label for="contactName">Contact Name:</label>
+                    <input type="text" id="contactName" name="contactName" class="form-control" required><br>
+                    <label for="location">Training Location:</label>
+                    <input type="text" id="location" name="location" class="form-control" required><br>
+                    <label for="preferredDayType">Preferred Day:</label>
+                    <select id="preferredDayType" name="preferredDayType" class="form-control">
+                        <option value="flexible">Flexible</option>
+                        <option value="exact">Exact Date</option>
+                    </select>
+                    <input type="date" id="preferredDate" name="preferredDate" class="form-control" style="display:none;"><br>
+                    <button type="submit" class="btn btn-success">Confirm Order</button>
+                    <button type="button" id="eraseTrainingButton" class="btn btn-danger">Erase My Training</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
