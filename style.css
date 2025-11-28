@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;700;800;900&display=swap');
+
+body { font-family: 'Inter', sans-serif; }
+h1, h2, h3, h4, .font-display { font-family: 'Montserrat', sans-serif; }
+
+.glass-panel {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.terminal-window {
+    @apply glass-panel rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,193,7,0.15)];
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-header {
+    @apply bg-black/40 h-8 flex items-center px-3 gap-1.5 border-b border-white/5 select-none;
+}
+
+.window-dot { @apply w-2.5 h-2.5 rounded-full; }
+
+.gradient-text {
+    background: linear-gradient(135deg, #FFC107 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dud { color: #757575; opacity: 0.7; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #FFC107; }
+
+section { scroll-margin-top: 100px; }
+
+.cyber-bg {
+    background-image: radial-gradient(rgba(30, 58, 138, 0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.mastery-arrow {
+    @apply hidden md:flex absolute top-1/2 -right-3 lg:-right-5 transform -translate-y-1/2 text-white/20 text-2xl z-10;
+}
