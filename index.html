@@ -6,24 +6,29 @@
     <title>Petr Pospíšil | Cyber Security Architect & Consultant</title>
     <meta name="description" content="Expert cybersecurity consulting, penetration testing, NIS2 audits, and training by Petr Pospíšil. EU Security Clearance holder. Focused on SME.">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        /* BRAND COLORS */
-                        primary: '#FFC107',   // Cyber Yellow
+                        primary: '#FFC107',      // Cyber Yellow
                         primaryHover: '#e0a800', 
-                        
-                        secondary: '#1e3a8a', // Deep Navy Blue
-                        
-                        dark: '#0f172a',      // Slate 900
-                        darker: '#020617',    // Slate 950
-                        surface: '#1e293b',   // Slate 800
+                        secondary: '#1e3a8a',    // Deep Navy Blue
+                        dark: '#0f172a',         // Slate 900
+                        darker: '#020617',       // Slate 950
+                        surface: '#1e293b',      // Slate 800
+                        danger: '#ef4444',       // Red 500 for Risk Emphasis
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -34,26 +39,11 @@
                         'float': 'float 6s ease-in-out infinite',
                         'float-delayed': 'float 6s ease-in-out 3s infinite',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'blink': 'blink 1s step-end infinite',
-                        'marquee': 'marquee 60s linear infinite', 
-                        'marquee-images': 'marquee-images 30s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
-                        },
-                        blink: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0' },
-                        },
-                        marquee: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-100%)' }, 
-                        },
-                        marquee_images: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-100%)' }, 
                         }
                     }
                 }
@@ -64,9 +54,15 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;700;800;900&display=swap');
         
+        /* --- Global Styles --- */
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4, .font-display { font-family: 'Montserrat', sans-serif; }
         
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* --- Components --- */
         /* Glassmorphism for cards */
         .glass-panel {
             background: rgba(30, 41, 59, 0.7);
@@ -103,61 +99,26 @@
             opacity: 0.7;
         }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #020617;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FFC107;
-        }
-        
-        section {
-            scroll-margin-top: 100px;
+        /* Path to Mastery Arrow */
+        .mastery-arrow {
+            @apply hidden md:flex absolute top-1/2 -right-4 lg:-right-6 transform -translate-y-1/2 text-white/20 text-xl z-10;
         }
 
-        /* Horizontal Timeline CSS */
-        .timeline-arrow-container {
-            display: none;
-        }
-        @media (min-width: 768px) {
-            .timeline-arrow-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                top: 30%;
-                right: -20px;
-                color: #FFC107;
-                font-size: 1.5rem;
-                z-index: 10;
-            }
-        }
-        
+        /* --- Utilities --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FFC107; }
+
         /* Subtle Cyber Console Background Pattern */
         .cyber-bg {
             background-image: radial-gradient(rgba(30, 58, 138, 0.15) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        
-        /* Hide Scrollbar for horizontal scrolling area */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        
-        /* Path to Mastery Arrow */
-        .mastery-arrow {
-            @apply hidden md:flex absolute top-1/2 -right-3 lg:-right-5 transform -translate-y-1/2 text-white/20 text-2xl z-10;
+
+        /* Hover Effect for Cards */
+        .hover-card-effect {
+            @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
         }
     </style>
 </head>
@@ -172,27 +133,17 @@
                 
                 <div class="leading-none font-display font-bold text-2xl text-white tracking-tight">
                     Cyber<span class="text-primary">POPE</span>
-                    <span class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1">Security Architect | Petr Pospíšil</span>
+                    <span class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1">Freelance Security Architect | Expert On Demand</span>
                 </div>
             </a>
 
             <nav class="hidden md:flex space-x-8 items-center font-medium text-sm">
-                <a href="#references" class="hover:text-primary transition-colors font-mono text-xs opacity-70 hover:opacity-100"><span class="text-primary">&lt;</span>Clients<span class="text-primary">/&gt;</span></a>
-                <a href="#challenge" class="hover:text-primary transition-colors font-mono text-xs opacity-70 hover:opacity-100"><span class="text-primary">&lt;</span>Problem<span class="text-primary">/&gt;</span></a>
-                <a href="#solution" class="hover:text-primary transition-colors font-mono text-xs opacity-70 hover:opacity-100"><span class="text-primary">&lt;</span>Solution<span class="text-primary">/&gt;</span></a>
-                
-                <a href="training.html" class="hover:text-primary transition-colors font-mono text-xs opacity-70 hover:opacity-100"><span class="text-primary">&lt;</span>Training<span class="text-primary">/&gt;</span></a>
-                
-                <a href="#journey" class="hover:text-primary transition-colors font-mono text-xs opacity-70 hover:opacity-100"><span class="text-primary">&lt;</span>My_Journey<span class="text-primary">/&gt;</span></a>
-                
                 <a href="schedule.html" class="bg-primary text-darker px-6 py-2.5 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] hover:shadow-[0_0_25px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5">
                     > Schedule Teams Call
                 </a>
-				
-				<a href="#about" class="hover:text-primary transition-colors font-mono text-xs opacity-70 hover:opacity-100"><span class="text-primary">&lt;</span>About_Me<span class="text-primary">/&gt;</span></a>
             </nav>
 
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition">
+            <button id="mobile-menu-btn" aria-label="Open Mobile Menu" class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -200,10 +151,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl">
             <div class="flex flex-col p-6 space-y-4">
                 <a href="#references" class="block text-lg text-gray-300 hover:text-primary font-medium">Clients & Trust</a>
-                <a href="#challenge" class="block text-lg text-gray-300 hover:text-primary font-medium">The Problem</a>
-                <a href="#solution" class="block text-lg text-gray-300 hover:text-primary font-medium">The Solution</a>
                 <a href="training.html" class="block text-lg text-gray-300 hover:text-primary font-medium">Training</a>
-                <a href="#journey" class="block text-lg text-gray-300 hover:text-primary font-medium">My Journey</a>
                 <a href="#about" class="block text-lg text-gray-300 hover:text-primary font-medium">About Me</a>
                 <a href="schedule.html" class="block bg-primary text-darker text-center py-3 rounded font-bold text-lg mt-4">Schedule Call</a>
             </div>
@@ -215,150 +163,155 @@
         <div class="absolute top-40 left-10 text-white/5 font-mono text-4xl font-bold rotate-12 pointer-events-none animate-float opacity-30">{ }</div>
         <div class="absolute bottom-40 right-10 text-white/5 font-mono text-4xl font-bold -rotate-12 pointer-events-none animate-float-delayed opacity-30">&lt;/&gt;</div>
         <div class="absolute top-1/2 left-1/4 text-primary/5 font-mono text-6xl font-bold pointer-events-none animate-pulse-slow opacity-20">01</div>
-        
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-secondary/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
         <div class="absolute top-[30%] right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
-	<section class="pt-6 pb-12 lg:pt-10 lg:pb-20 container mx-auto px-6 relative overflow-visible">
-    <div class="flex flex-col lg:flex-row gap-12 items-start">
         
-        <div class="lg:w-1/2 z-20 order-2 lg:order-1 text-center lg:text-left">
-            
-            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-surface border border-white/10 text-primary text-xs font-bold tracking-wider uppercase mb-6 shadow-lg font-mono">
-                <span class="text-green-500 text-lg">●</span> 
-                STATUS: Open for Consulting
-            </div>
-            
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                Defend Your Business 
-                <span class="block mt-2">Against <span id="dynamic-slogan" class="gradient-text inline-block font-mono whitespace-nowrap">The Unknown</span></span>
-            </h1>
-            
-            <div class="text-lg text-gray-400 mb-8 leading-relaxed">
-                <p class="mb-5">
-                    <strong class="text-white text-xl">Petr Pospíšil</strong> <span class="text-primary font-mono">//</span> Cybersecurity Architect & Trainer. 
-                    <br>Security isn't just about compliance - it's about <strong>relevance</strong>.
-                </p>
-
-                <div class="space-y-3 font-mono text-sm border-l-2 border-white/10 pl-4">
-                    <div class="flex items-center gap-3">
-                        <span class="text-primary text-lg">>></span> 
-                        <span><strong class="text-white">Compliance:</strong> Practical NIS2 & ISO navigation.</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-red-500 text-lg">>></span> 
-                        <span><strong class="text-white">Offense:</strong> Real-world PenTesting & Audits.</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-blue-500 text-lg">>></span> 
-                        <span><strong class="text-white">Defense:</strong> Infrastructure Hardening & Training.</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                 <a href="schedule.html" class="w-full sm:w-auto bg-primary text-darker px-8 py-4 rounded-lg font-bold text-lg transition transform hover:-translate-y-1 hover:bg-primaryHover shadow-lg shadow-primary/20 flex items-center justify-center gap-3 font-mono">
-                    > Schedule Teams Call
-                </a>
-                <a href="mailto:petr.pospisil@cyberpope.eu" class="w-full sm:w-auto glass-panel text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/5 transition flex items-center justify-center gap-2 border border-white/10 font-mono">
-                    [ Send_Email ]
-                </a>
-            </div>
-        </div>
-
-        <div class="lg:w-1/2 w-full relative z-10 order-1 lg:order-2">
-            
-            <div class="relative group max-w-md mx-auto mb-6">
-                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+        <section class="pt-10 pb-16 lg:pt-20 lg:pb-28 container mx-auto px-6 relative overflow-visible">
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
                 
-                <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl transform transition duration-500 hover:scale-[1.01]">
-                    <img src="petr_osce_capacity_building.jpg" alt="Petr Pospíšil" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition duration-500">
+                <div class="lg:w-1/2 z-20 order-2 lg:order-1 text-center lg:text-left">
                     
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-darker via-darker/80 to-transparent p-6 pt-12">
-    <div class="font-mono text-primary text-xs font-bold mb-1">> WHOAMI</div>
-    <div class="text-white font-bold text-xl font-display">Petr Pospíšil</div>
-    <div class="text-gray-400 text-sm">Security Architect & Trainer</div>
-</div>
+                    <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-surface border border-white/10 text-primary text-xs font-bold tracking-wider uppercase mb-6 shadow-lg font-mono">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        STATUS: Open for Consulting
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                        Defend Your Business 
+                        <span class="block mt-2">Against <span id="dynamic-slogan" class="gradient-text inline-block font-mono whitespace-nowrap">The Unknown</span></span>
+                    </h1>
+                    
+                    <div class="text-lg text-gray-400 mb-8 leading-relaxed">
+                        <p class="mb-5">
+                            <strong class="text-white text-xl">Petr Pospíšil</strong> <span class="text-primary font-mono">//</span> Security Architect & Trainer
+                            <br>I deliver <strong>Tailored Security</strong> - finding the right balance between protection & cost.
+                        </p>
+
+                        <div class="space-y-3 font-mono text-sm border-l-2 border-white/10 pl-4 text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="text-primary text-lg">>></span> 
+                                <span><strong class="text-white">Strategy:</strong> Fractional CISO support. Senior expertise - On Demand.</span>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <span class="text-red-500 text-lg">>></span> 
+                                <span><strong class="text-white">Offense:</strong> PenTesting & Security Audits for immediate insight.</span>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <span class="text-blue-500 text-lg">>></span> 
+                                <span><strong class="text-white">Defense:</strong> Infrastructure Protection & Incident Response.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                         <a href="schedule.html" class="w-full sm:w-auto bg-primary text-darker px-8 py-4 rounded-lg font-bold text-lg transition transform hover:-translate-y-1 hover:bg-primaryHover shadow-lg shadow-primary/20 flex items-center justify-center gap-3 font-mono">
+                            > Schedule Teams Call
+                        </a>
+                        <a href="mailto:petr.pospisil@cyberpope.eu" class="w-full sm:w-auto glass-panel text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/5 transition flex items-center justify-center gap-2 border border-white/10 font-mono">
+                            [ Send_Email ]
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 w-full relative z-10 order-1 lg:order-2">
+                    
+                    <div class="relative group max-w-md mx-auto mb-6">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl transform transition duration-500 hover:scale-[1.01]">
+                            <img src="petr_osce_capacity_building.jpg" alt="Petr Pospíšil" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition duration-500">
+                            
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-darker via-darker/80 to-transparent p-6 pt-12">
+                                <div class="font-mono text-primary text-xs font-bold mb-1">> WHOAMI</div>
+                                <div class="text-white font-bold text-xl font-display">Petr Pospíšil</div>
+                                <div class="text-gray-400 text-sm">Security Architect & Trainer</div>
+                            </div>  
+                        </div>
+                    </div>
+
+                    <div class="max-w-md mx-auto bg-surface/30 rounded-2xl border border-white/10 p-6 backdrop-blur-sm">
+                        <div class="grid grid-cols-2 gap-y-6 gap-x-6 text-sm">
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="text-primary text-lg w-10 flex justify-center shrink-0"><i class="fas fa-history"></i></div>
+                                <div>
+                                    <div class="font-bold text-white">Est. 2016</div>
+                                    <div class="text-[10px] text-gray-400 uppercase tracking-wide">Active Since</div>
+                                </div>
+                            </div>
+                            
+                         <div class="flex items-center gap-3">
+                            <div class="text-green-500 text-lg w-10 flex justify-center shrink-0"><i class="fas fa-user-shield"></i></div>
+                            <div>
+                                <div class="font-bold text-white">EU Clearance</div>
+                                <div class="text-[10px] text-gray-400 uppercase tracking-wide">Government Vetted</div>
+                            </div>
+                        </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="text-blue-400 text-lg w-10 flex justify-center shrink-0"><i class="fas fa-handshake"></i></div>
+                                <div>
+                                    <div class="font-bold text-white">Trusted by</div>
+                                    <div class="text-[10px] text-gray-400 uppercase tracking-wide">OSCE & UNDP</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="text-yellow-500 text-lg w-10 flex justify-center shrink-0"><i class="fas fa-certificate"></i></div>
+                                <div>
+                                    <div class="font-bold text-white">Certified</div>
+                                    <div class="text-[10px] text-gray-400 uppercase tracking-wide">CISSP & SecurityX</div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-span-2 border-t border-white/5 pt-3 mt-1 flex items-center justify-center gap-2 text-gray-400">
+                                <i class="fas fa-smile-beam text-primary"></i> 
+                                <div>
+                                <div class="font-bold text-white">Pro & Fun</div>
+                                <div class="text-[10px] text-gray-400 uppercase tracking-wide">Genuinely Nice Guy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-           <div class="max-w-md mx-auto bg-surface/30 rounded-2xl border border-white/10 p-6 backdrop-blur-sm">
-    <div class="grid grid-cols-2 gap-y-6 gap-x-6 text-sm">
-        
-        <div class="flex items-center gap-3">
-            <div class="text-primary text-lg w-10 flex justify-center shrink-0"><i class="fas fa-history"></i></div>
-            <div>
-                <div class="font-bold text-white">9+ Years</div>
-                <div class="text-[10px] text-gray-400 uppercase tracking-wide">Experience</div>
-            </div>
-        </div>
-        
-        <div class="flex items-center gap-3">
-            <div class="text-green-500 text-lg w-10 flex justify-center shrink-0"><i class="fas fa-user-shield"></i></div>
-            <div>
-                <div class="font-bold text-white">EU Clearance</div>
-                <div class="text-[10px] text-gray-400 uppercase tracking-wide">Secret / Vetted</div>
-            </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-            <div class="text-blue-400 text-lg w-10 flex justify-center shrink-0"><i class="fas fa-handshake"></i></div>
-            <div>
-                <div class="font-bold text-white">Trusted by</div>
-                <div class="text-[10px] text-gray-400 uppercase tracking-wide">OSCE & UNDP</div>
-            </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-            <div class="text-yellow-500 text-lg w-10 flex justify-center shrink-0"><i class="fas fa-certificate"></i></div>
-            <div>
-                <div class="font-bold text-white">Certified</div>
-                <div class="text-[10px] text-gray-400 uppercase tracking-wide">CISSP & SecurityX</div>
-            </div>
-        </div>
-        
-        <div class="col-span-2 border-t border-white/5 pt-3 mt-1 flex items-center justify-center gap-2 text-gray-400">
-            <i class="fas fa-smile-beam text-primary"></i> 
-            <span class="text-xs italic">Genuinely Nice Guy // Pro & Fun</span>
-        </div>
-    </div>
-</div>
-
-        </div>
-    </div>
-</section>
-
-
-
-        <section id="challenge" class="py-20 bg-darker border-b border-white/5">
+        <section id="challenge" class="py-24 bg-gradient-to-b from-darker to-surface/20 border-b border-white/5">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-4xl mx-auto mb-16">
-                    <span class="text-red-400 text-xs font-bold tracking-wider uppercase font-mono opacity-70">> ./system_audit --business_risk</span>
-                    <h2 class="text-4xl font-bold text-white mt-2 mb-4">Your business isn't an IT project. It's a target.</h2>
-                    <p class="text-xl text-gray-400">Overcome the three biggest worries for business owners who lack a dedicated security team.</p>
+                    <span class="text-danger text-xs font-bold tracking-wider uppercase font-mono opacity-80 border border-danger/30 px-2 py-1 rounded bg-danger/10">> ./audit --critical_risks</span>
+                    <h2 class="text-4xl font-bold text-white mt-4 mb-4">Stop treating Security as "just IT support"</h2>
+                    <p class="text-xl text-gray-400">Ignorance is no longer a defense. You are facing three critical risks that threaten your profitability.</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-6 rounded-lg bg-surface/10 shadow-xl border-t-4 border-red-500 flex flex-col items-center text-center group hover:bg-surface/20 transition">
-                        <i class="fas fa-balance-scale-right text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"></i>
-                        <h3 class="text-xl font-bold text-white mb-2 font-display">Regulatory Stress & Fines</h3>
+                    <div class="p-6 rounded-lg bg-darker shadow-2xl border border-red-900/50 relative group hover:border-red-500/50 transition duration-300 flex flex-col items-center text-center">
+                        <i class="fas fa-gavel text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"></i>
+                        <h3 class="text-xl font-bold text-white mb-2 font-display">Regulatory Hammers</h3>
                         <p class="text-gray-400 text-sm">
-                            Are you risking <strong>heavy fines</strong> due to complex EU regulations like <strong>NIS2</strong> or ISO 27001 that you don't fully understand?
+                             <strong>NIS2</strong> and the <strong>Cyber Resilience Act</strong> are here. Non-compliance means massive fines and personal liability for executives. Are your documents ready for an audit tomorrow?
                         </p>
                     </div>
 
-                    <div class="p-6 rounded-lg bg-surface/10 shadow-xl border-t-4 border-red-500 flex flex-col items-center text-center group hover:bg-surface/20 transition">
-                        <i class="fas fa-hand-holding-usd text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"></i>
-                        <h3 class="text-xl font-bold text-white mb-2 font-display">Operational Downtime</h3>
+                    <div class="p-6 rounded-lg bg-darker shadow-2xl border border-red-900/50 relative group hover:border-red-500/50 transition duration-300 flex flex-col items-center text-center">
+                        <i class="fas fa-money-bill-wave-alt text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"></i>
+                        <h3 class="text-xl font-bold text-white mb-2 font-display">Ransomware Reality</h3>
                         <p class="text-gray-400 text-sm">
-                            Worried about a <strong>ransomware attack</strong> that halts operations, corrupts critical data, and destroys customer trust?
+                            It’s not "if", it’s "when". One click by an employee can encrypt your data. Downtime costs thousands per hour, plus the secondary damage of <strong>GDPR fines</strong> and lost client trust.
                         </p>
                     </div>
 
-                    <div class="p-6 rounded-lg bg-surface/10 shadow-xl border-t-4 border-red-500 flex flex-col items-center text-center group hover:bg-surface/20 transition">
-                        <i class="fas fa-user-shield text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"></i>
-                        <h3 class="text-xl font-bold text-white mb-2 font-display">Untrained Staff</h3>
+                    <div class="p-6 rounded-lg bg-darker shadow-2xl border border-red-900/50 relative group hover:border-red-500/50 transition duration-300 flex flex-col items-center text-center">
+                        <i class="fas fa-users-slash text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"></i>
+                        <h3 class="text-xl font-bold text-white mb-2 font-display">The Skills Vacuum</h3>
                         <p class="text-gray-400 text-sm">
-                            Your team doesn't know how to respond to an incident. <strong>Human error</strong> remains the easiest path for attackers.
+                             Your IT team manages infrastructure, not defense. They lack specialized security skills. Without a dedicated Security Architect, you are building your business on a shaky foundation.
                         </p>
                     </div>
                 </div>
@@ -376,66 +329,77 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="p-8 rounded-lg bg-surface/50 shadow-2xl border-l-4 border-primary">
-                    <div class="text-5xl text-primary mb-4"><i class="fas fa-lock-open"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-3 font-display">Compliance & Architecture</h3>
-                    <p class="text-gray-400 mb-4 text-xs leading-relaxed">
-                        <strong>Outcome:</strong> Ensure your company achieves compliance with <strong>NIS2, ISO 27001</strong> or other standard without complexity. I act as your fractional CISO.
-                    </p>
-                    <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
-                        <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Security Roadmap</li>
-                        <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Risk-based Security</li>
-						                        <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Compliance</li>
+                <div class="p-8 rounded-lg glass-panel hover-card-effect border-l-4 border-primary">
+                    <div class="text-5xl text-primary mb-6"><i class="fas fa-chess-king"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-4 font-display">Fractional CISO & Architect</h3>
+                    
+                    <div class="flex flex-col gap-3 mb-4 min-h-[100px]">
+                        <div class="text-white font-bold text-sm leading-tight">Strategic leadership backed by deep technical engineering roots.</div>
+                        <div class="h-px w-12 bg-primary/50"></div>
+                        <div class="text-gray-400 text-xs leading-relaxed">I solve complex technical architecture problems while navigating <strong>ISO 27001</strong>, <strong>NIS2</strong>, and the <strong>CRA</strong>.</div>
+                    </div>
 
+                    <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
+                        <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Flexible & On-Demand</li>
+                        <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Senior Expert for the Cost of a Junior</li>
+                        <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Solves Complex SME Challenges</li>
                     </ul>
                 </div>
 
-                <div class="p-8 rounded-lg bg-surface/50 shadow-2xl border-l-4 border-red-500">
-                    <div class="text-5xl text-red-500 mb-4"><i class="fas fa-bomb"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-3 font-display">Vulnerability Testing</h3>
-                    <p class="text-gray-400 mb-4 text-xs leading-relaxed">
-                        <strong>Outcome:</strong> Get clarity on weak spots. I conduct <strong>Penetration Tests & Audits</strong> to find holes before attackers do.
-                    </p>
-                    <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
-                        <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Black Box PenTests</li>
-                        <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Infrastructure Audits</li>
-						                        <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Application Reviews</li>
-												 <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Cloud Security Audit</li>
+                <div class="p-8 rounded-lg glass-panel hover-card-effect border-l-4 border-red-500">
+                    <div class="text-5xl text-red-500 mb-6"><i class="fas fa-bomb"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-4 font-display">Vulnerability Testing</h3>
+                    
+                    <div class="flex flex-col gap-3 mb-4 min-h-[100px]">
+                        <div class="text-white font-bold text-sm leading-tight">Get clarity on your weak spots immediately.</div>
+                        <div class="h-px w-12 bg-red-500/50"></div>
+                        <div class="text-gray-400 text-xs leading-relaxed">I conduct <strong>Penetration Tests & Security Audits</strong> to find and fix holes before attackers exploit them.</div>
+                    </div>
 
+                    <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
+                        <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Web & Android App PenTests</li>
+                        <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Vulnerability Scanning</li>
+                        <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Cloud Security Audits</li>
                     </ul>
                 </div>
 
-                <div class="p-8 rounded-lg bg-surface/50 shadow-2xl border-l-4 border-blue-500">
-                    <div class="text-5xl text-blue-500 mb-4"><i class="fas fa-handshake-angle"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-3 font-display">Resilience & Training</h3>
-                    <p class="text-gray-400 mb-4 text-xs leading-relaxed">
-                        <strong>Outcome:</strong> Stop your people from being the weakest link. Crisis management (<strong>Tabletop Exercises</strong>) and social engineering.
-                    </p>
-                    <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
-                        <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Crisis Simulations</li>
-                        <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Phishing Tests</li>
-						                        <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Security Awareness</li>
+                <div class="p-8 rounded-lg glass-panel hover-card-effect border-l-4 border-blue-500">
+                    <div class="text-5xl text-blue-500 mb-6"><i class="fas fa-handshake-angle"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-4 font-display">Resilience & Training</h3>
+                    
+                    <div class="flex flex-col gap-3 mb-4 min-h-[100px]">
+                        <div class="text-white font-bold text-sm leading-tight">Stop your people from being the weakest link.</div>
+                        <div class="h-px w-12 bg-blue-500/50"></div>
+                        <div class="text-gray-400 text-xs leading-relaxed">I train your staff, IT teams and top management to recognize and react to threats.</div>
+                    </div>
 
+                    <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
+                        <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Tabletop Exercises</li>
+                        <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Phishing & Staff Awareness</li>
+                        <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> IT Security Trainings</li>
                     </ul>
                 </div>
 
-                <div class="p-8 rounded-lg bg-surface/50 shadow-2xl border-l-4 border-green-500">
-                    <div class="text-5xl text-green-500 mb-4"><i class="fas fa-code-branch"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-3 font-display">S-SDLC (Shift Left)</h3>
-                    <p class="text-gray-400 mb-4 text-xs leading-relaxed">
-                        <strong>Outcome:</strong> Build security IN, don't bolt it on. I implement <strong>Secure SDLC</strong> processes to catch vulnerabilities early, saving costs before deployment.
-                    </p>
+                <div class="p-8 rounded-lg glass-panel hover-card-effect border-l-4 border-green-500">
+                    <div class="text-5xl text-green-500 mb-6"><i class="fas fa-code-branch"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-4 font-display">S-SDLC (Shift Left)</h3>
+                    
+                    <div class="flex flex-col gap-3 mb-4 min-h-[100px]">
+                        <div class="text-white font-bold text-sm leading-tight">Build security IN, don't bolt it on later.</div>
+                        <div class="h-px w-12 bg-green-500/50"></div>
+                        <div class="text-gray-400 text-xs leading-relaxed">I implement <strong>Secure SDLC</strong> processes to catch vulnerabilities early, saving costs before deployment.</div>
+                    </div>
+
                     <ul class="space-y-1 text-xs text-gray-500 font-mono pt-3 border-t border-white/5">
                         <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> Secure Coding</li>
                         <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> DevSecOps</li>
+                        <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> Resilient Deployment</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-     
-
-        <section id="journey" class="py-16 bg-surface/30 border-y border-white/5 relative">
+        <section id="journey" class="py-20 bg-surface/30 border-y border-white/5 relative">
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="text-primary text-xs font-bold tracking-wider uppercase font-mono opacity-70">> ./career_path --verbose</span>
@@ -454,9 +418,9 @@
                         <p class="text-gray-400 text-xs leading-relaxed px-2">
                             Started as a <strong>Red Teamer</strong>. I learned exactly how attackers think and exploit vulnerabilities.
                         </p>
-                         <div class="mastery-arrow">
+                        <div class="mastery-arrow">
                              <i class="fas fa-arrow-right"></i>
-                         </div>
+                        </div>
                     </div>
 
                     <div class="relative z-10 flex flex-col items-center text-center group">
@@ -493,12 +457,15 @@
                         <p class="text-gray-400 text-xs leading-relaxed px-2">
                             <strong>Independent Consultant</strong>. Combining technical depth with strategic business vision.
                         </p>
+                        <div class="mastery-arrow text-primary animate-pulse">
+                             <i class="fas fa-map-marker-alt"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-		
-		   <section id="showcase" class="py-20 bg-surface/20 border-b border-white/5">
+        
+        <section id="showcase" class="py-24 bg-surface/20 border-b border-white/5">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-4xl mx-auto mb-16">
                     <span class="text-primary text-xs font-bold tracking-wider uppercase font-mono opacity-70">> ./training_module --execute</span>
@@ -516,7 +483,7 @@
                             <div class="ml-2 text-[10px] font-mono text-gray-400">osce_risk_workshop.jpg</div>
                         </div>
                         <div class="relative aspect-video overflow-hidden">
-                            <img src="petr_trainer_OSCE.jpg" alt="Petr Pospíšil training OSCE team" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="petr_trainer_OSCE.jpg" loading="lazy" alt="Petr Pospíšil training OSCE team" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6">
                                 <h4 class="text-white font-bold font-display text-lg">Simplifying Risk for Leaders</h4>
                                 <p class="text-sm text-gray-300 mt-1">Leading a "Risk Tolerance" workshop for international stakeholders. I turn abstract threats into clear decision points for management.</p>
@@ -531,7 +498,7 @@
                             <div class="ml-2 text-[10px] font-mono text-gray-400">active_defense_lecture.jpg</div>
                         </div>
                         <div class="relative aspect-video overflow-hidden">
-                            <img src="petr_women_cyber_trainer.jpg" alt="Petr Pospíšil lecturing" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="petr_women_cyber_trainer.jpg" loading="lazy" alt="Petr Pospíšil lecturing" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6">
                                 <h4 class="text-white font-bold font-display text-lg">Empowering the Frontline</h4>
                                 <p class="text-sm text-gray-300 mt-1">Delivering practical, hands-on defense training. I ensure your staff leaves with skills they can use immediately, not just theory.</p>
@@ -550,37 +517,36 @@
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
                 
-               <div class="flex flex-col items-center text-center p-4 rounded-lg bg-surface/30 hover:bg-surface/50 transition">
-    <div class="h-16 w-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition transform hover:scale-105 overflow-hidden p-2">
-        <img src="cissp.png" alt="ISC2 CISSP" class="w-full h-full object-contain">
-    </div>
-    
-    <h3 class="text-white font-bold text-sm mb-1">ISC2 CISSP</h3>
-    <p class="text-primary text-[10px] font-bold mb-2">Management Gold Standard</p>
-    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Proves ability to design, engineer, and manage the overall security posture of an organization.</p>
-</div>
+                <div class="flex flex-col items-center text-center p-4 rounded-lg bg-surface/30 hover:bg-surface/50 transition">
+                    <div class="h-16 w-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition transform hover:scale-105 overflow-hidden p-2">
+                        <img src="cissp.png" loading="lazy" alt="ISC2 CISSP" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-white font-bold text-sm mb-1">ISC2 CISSP</h3>
+                    <p class="text-primary text-[10px] font-bold mb-2">Management Gold Standard</p>
+                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Global standard for designing and managing enterprise security posture.</p>
+                </div>
 
                 <div class="flex flex-col items-center text-center p-4 rounded-lg bg-surface/30 hover:bg-surface/50 transition">
                     <div class="h-16 w-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition transform hover:scale-105 overflow-hidden p-2">
-                    <img src="securityx.png" alt="CompTIA SecurityX" class="w-full h-full object-contain">
+                        <img src="securityx.png" loading="lazy" alt="CompTIA SecurityX" class="w-full h-full object-contain">
                     </div>
                     <h3 class="text-white font-bold text-sm mb-1">CompTIA SecurityX</h3>
                     <p class="text-primary text-[10px] font-bold mb-2">Advanced Practitioner</p>
-                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Validates advanced skills in security architecture and engineering for complex enterprise environments.</p>
+                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Advanced mastery in security architecture and engineering for complex environments.</p>
                 </div>
 
                 <div class="flex flex-col items-center text-center p-4 rounded-lg bg-surface/30 hover:bg-surface/50 transition">
-                    <img src="gcti.png" alt="GIAC GCTI" class="h-16 w-16 object-contain mb-3 transition transform hover:scale-105">
+                    <img src="gcti.png" loading="lazy" alt="GIAC GCTI" class="h-16 w-16 object-contain mb-3 transition transform hover:scale-105">
                     <h3 class="text-white font-bold text-sm mb-1">GIAC GCTI</h3>
                     <p class="text-primary text-[10px] font-bold mb-2">Threat Intelligence</p>
-                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Mastery in tactical, operational, and strategic cyber threat intelligence to detect and defeat adversaries.</p>
+                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Tactical and strategic intelligence to detect and defeat adversaries.</p>
                 </div>
 
                 <div class="flex flex-col items-center text-center p-4 rounded-lg bg-surface/30 hover:bg-surface/50 transition">
-                    <img src="gcda.png" alt="GIAC GCDA" class="h-16 w-16 object-contain mb-3 transition transform hover:scale-105">
+                    <img src="gcda.png" loading="lazy" alt="GIAC GCDA" class="h-16 w-16 object-contain mb-3 transition transform hover:scale-105">
                     <h3 class="text-white font-bold text-sm mb-1">GIAC GCDA</h3>
                     <p class="text-primary text-[10px] font-bold mb-2">Detection Analyst</p>
-                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Advanced skills in collecting, analyzing, and using network and endpoint data to detect malicious activity.</p>
+                    <p class="text-gray-400 text-[10px] leading-relaxed px-2">Advanced network and endpoint analysis to detect malicious activity.</p>
                 </div>
 
             </div>
@@ -618,20 +584,18 @@
                 </div>
             </div>
         </section>
-		
-		
-		      <!-- 8. ABOUT / WHY WORK WITH ME? (Reworked) -->
+        
         <section id="about" class="py-24 bg-surface/40 border-t border-white/5">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-16">
                     <div class="md:w-1/3 text-center">
                          <div class="w-48 h-72 mx-auto rounded-lg overflow-hidden border-4 border-primary shadow-2xl shadow-primary/20 mb-6 relative group bg-darker transform hover:scale-105 transition duration-500">
-                            <img src="petr_pospisil_main.jpg" alt="Petr Pospíšil" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                            <img src="petr_pospisil_main.jpg" loading="lazy" alt="Petr Pospíšil" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
                              <div class="absolute inset-0 border-4 border-primary/50 rounded-lg animate-pulse"></div>
                         </div>
                         <h3 class="text-3xl font-bold text-white font-display">Petr Pospíšil</h3>
                         <p class="text-primary font-mono font-medium mb-4 text-lg">&lt;Security_Architect /&gt;</p>
-                         <!-- Logos below profile in About section -->
+                         
                         <div class="flex justify-center gap-4 mt-4">
                              <a href="https://www.linkedin.com/in/petr-pospisil111" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white hover:bg-[#0077b5] transition border border-white/10"><i class="fab fa-linkedin-in"></i></a>
                              <a href="https://navolnenoze.cz/prezentace/petr-pospisil/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white hover:bg-red-600 transition font-bold border border-white/10">N</a>
@@ -669,39 +633,30 @@
                 </div>
             </div>
         </section>
-		
-		
+        
         <section id="references" class="py-16 bg-surface/30 border-y border-white/5">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-4xl mx-auto">
                     <span class="text-primary text-xs font-bold tracking-wider uppercase font-mono opacity-70">> ./trusted_partners --international</span>
                     <h2 class="text-2xl font-bold text-white mt-2 mb-10">Trusted by International Institutions</h2>
                     
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-center">
-                        
-                        <div class="flex items-center justify-center hover:opacity-100 transition duration-300 bg-white p-2 rounded-lg h-24">
-                             <img src="undp-logo.png" alt="UNDP" class="max-h-20 w-auto object-contain">
-                        </div>
-
-                        <div class="flex items-center justify-center hover:opacity-100 transition duration-300 bg-white p-2 rounded-lg h-24">
-                            <img src="osce.jpg" alt="OSCE" class="max-h-20 w-auto object-contain">
-                        </div>
-
-                        <div class="flex items-center justify-center hover:opacity-100 transition duration-300 bg-white p-2 rounded-lg h-24">
-                            <img src="eeas.png" alt="EEAS" class="max-h-20 w-auto object-contain">
-                        </div>
-
-                        <div class="flex items-center justify-center hover:opacity-100 transition duration-300 bg-white p-2 rounded-lg h-24">
-                            <img src="ministry_of_foreign_affrais-cz.png" alt="MFA CZ" class="max-h-20 w-auto object-contain">
-                        </div>
-                        
+                    <div class="flex flex-nowrap justify-center gap-4 md:gap-12 overflow-x-auto pb-2 md:pb-0">
+                         <div class="bg-white p-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:brightness-110 transition duration-300 shrink-0">
+                            <img src="undp-logo.png" loading="lazy" alt="UNDP" class="h-12 md:h-16 w-auto object-contain">
+                         </div>
+                         <div class="bg-white p-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:brightness-110 transition duration-300 shrink-0">
+                            <img src="osce.jpg" loading="lazy" alt="OSCE" class="h-12 md:h-16 w-auto object-contain">
+                         </div>
+                         <div class="bg-white p-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:brightness-110 transition duration-300 shrink-0">
+                            <img src="eeas.png" loading="lazy" alt="EEAS" class="h-12 md:h-16 w-auto object-contain">
+                         </div>
+                         <div class="bg-white p-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:brightness-110 transition duration-300 shrink-0">
+                            <img src="ministry_of_foreign_affrais-cz.png" loading="lazy" alt="MFA CZ" class="h-12 md:h-16 w-auto object-contain">
+                         </div>
                     </div>
                 </div>
             </div>
-			
         </section>
-		
-
     </main>
 
     <footer class="bg-darker border-t border-white/5 py-12 text-sm text-gray-500 font-mono">
@@ -802,14 +757,14 @@
             }
         }
 
-      const phrases = [
-    "The Unknown",      // 1. Fear of what they don't see
-    "Ransomware",       // 2. The most common headline threat
-    "Massive Fines",    // 3. The financial impact (NIS2)
-    "Public Scandal",   // 4. The reputational impact (Trust)
-    "Data Theft",       // 5. The intellectual property impact (Espionage)
-    "Human Error"       // 6. The internal/staff impact
-];
+        const phrases = [
+            "The Unknown",      // 1. Fear of what they don't see
+            "Ransomware",       // 2. The most common headline threat
+            "Massive Fines",    // 3. The financial impact (NIS2)
+            "Public Scandal",   // 4. The reputational impact (Trust)
+            "Data Theft",       // 5. The intellectual property impact (Espionage)
+            "Human Error"       // 6. The internal/staff impact
+        ];
 
         const el = document.querySelector('#dynamic-slogan');
         const fx = new TextScramble(el);
