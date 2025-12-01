@@ -179,38 +179,49 @@
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header class="fixed w-full top-0 z-50 border-b border-white/5 bg-darker/90 backdrop-blur-md transition-all duration-300 shadow-lg">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="group flex items-center gap-3">
-                <div class="bg-white p-1 rounded h-12 w-12 flex items-center justify-center hover:opacity-90 transition">
-                    <img src="cyberpope-logo.png" alt="CyberPope Logo" class="h-full w-full object-contain">
-                </div>
-                
-                <div class="leading-none font-display font-bold text-2xl text-white tracking-tight">
-                    Cyber<span class="text-primary">POPE</span>
-                    <span class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1">Freelance Security Architect | Expert On Demand</span>
-                </div>
-            </a>
-
-            <nav class="hidden md:flex space-x-8 items-center font-medium text-sm">
-                <a href="index.html" class="block text-lg text-gray-300 hover:text-primary font-medium">Home</a>
-                <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink" class="bg-primary text-darker px-6 py-2.5 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] hover:shadow-[0_0_25px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5">
-                    > Schedule Teams Call
-                </a>
-            </nav>
-
-            <button id="mobile-menu-btn" aria-label="Open Mobile Menu" class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl">
-            <div class="flex flex-col p-6 space-y-4">
-                <!-- <a href="#references" class="block text-lg text-gray-300 hover:text-primary font-medium">Clients & Trust</a> -->
-                <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink" class="block bg-primary text-darker text-center py-3 rounded font-bold text-lg mt-4">Schedule Call</a>
+   <header class="fixed w-full top-0 z-50 border-b border-white/5 bg-darker/90 backdrop-blur-md transition-all duration-300 shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo Section -->
+        <a href="#" class="group flex items-center gap-3">
+            <div class="bg-white p-1 rounded h-12 w-12 flex items-center justify-center hover:opacity-90 transition">
+                <img src="cyberpope-logo.png" alt="CyberPope Logo" class="h-full w-full object-contain">
             </div>
+            
+            <div class="leading-none font-display font-bold text-2xl text-white tracking-tight">
+                Cyber<span class="text-primary">POPE</span>
+                <span class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1">Freelance Security Architect | Expert On Demand</span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8 items-center font-medium text-sm">
+            <a href="index.html" class="block text-lg text-gray-300 hover:text-primary font-medium">Home</a>
+
+            <!-- THE SUBTLE UKRAINE EASTER EGG -->
+            <!-- Default: Tiny, dim (30% opacity). Hover: Bright (100%), grows slightly, shows text. -->
+            <div class="cursor-help py-2 transition-all duration-300 opacity-30 hover:opacity-100 hover:scale-125" title="Слава Україні!">
+                <div class="h-2 w-2 rounded-full bg-gradient-to-b from-[#0057B7] to-[#FFDD00] shadow-[0_0_5px_rgba(0,87,183,0.5)]"></div>
+            </div>
+
+            <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink" class="bg-primary text-darker px-6 py-2.5 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] hover:shadow-[0_0_25px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5">
+                > Schedule Teams Call
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" aria-label="Open Mobile Menu" class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl">
+        <div class="flex flex-col p-6 space-y-4">
+            <!-- <a href="#references" class="block text-lg text-gray-300 hover:text-primary font-medium">Clients & Trust</a> -->
+            <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink" class="block bg-primary text-darker text-center py-3 rounded font-bold text-lg mt-4">Schedule Call</a>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="flex-grow pt-20 relative overflow-hidden">
         
