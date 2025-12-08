@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Consultation | Petr Pospíšil</title>
+    <meta name="description" content="Schedule a cybersecurity consultation with Petr Pospíšil.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFC107',
+                        primaryHover: '#e0a800', 
+                        secondary: '#1e3a8a',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        surface: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'], 
+                        mono: ['Courier New', 'Courier', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;700;800;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-display { font-family: 'Montserrat', sans-serif; }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .terminal-window {
+            @apply glass-panel rounded-lg overflow-hidden transition-all duration-300;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .terminal-header {
+            @apply bg-black/40 h-8 flex items-center px-3 gap-1.5 border-b border-white/5 select-none;
+        }
+        
+        .window-dot { @apply w-2.5 h-2.5 rounded-full; }
+        
+        /* Loading Spinner */
+        .iframe-loader {
+            border: 4px solid #1e293b;
+            border-top: 4px solid #FFC107;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FFC107; }
+
+        .cyber-bg {
+            background-image: radial-gradient(rgba(30, 58, 138, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-300 antialiased selection:bg-primary selection:text-darker flex flex-col min-h-screen font-sans cyber-bg">
+
+    <header class="fixed w-full top-0 z-50 border-b border-white/5 bg-darker/90 backdrop-blur-md transition-all duration-300 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="group flex items-center gap-3">
+                <div class="bg-white p-1 rounded h-12 w-12 flex items-center justify-center hover:opacity-90 transition">
+                    <img src="cyberpope-logo.png" alt="CyberPope Logo" class="h-full w-full object-contain" onerror="this.src='https://via.placeholder.com/50?text=CP'">
+                </div>
+                <div class="leading-none font-display font-bold text-2xl text-white tracking-tight">
+                    Cyber<span class="text-primary">POPE</span>
+                    <span class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1">Freelance Security Architect | Expert On Demand</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <a href="index.html" class="block text-lg text-gray-300 hover:text-primary font-medium">Home</a>
+                <a href="#" class="bg-primary text-darker px-6 py-2.5 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] hover:shadow-[0_0_25px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5">
+                    > Schedule Teams Call
+                </a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="index.html#references" class="block text-lg text-gray-300 hover:text-primary font-medium">Clients & Trust</a>
+                <a href="index.html#challenge" class="block text-lg text-gray-300 hover:text-primary font-medium">The Problem</a>
+                <a href="index.html#solution" class="block text-lg text-gray-300 hover:text-primary font-medium">The Solution</a>
+                <a href="index.html#showcase" class="block text-lg text-gray-300 hover:text-primary font-medium">Training & Field Ops</a>
+                <a href="index.html#journey" class="block text-lg text-gray-300 hover:text-primary font-medium">My Journey</a>
+                <a href="#" class="block bg-primary text-darker text-center py-3 rounded font-bold text-lg mt-4">Schedule Call</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24 relative overflow-hidden flex flex-col items-center">
+        
+        <div class="absolute top-40 left-10 text-white/5 font-mono text-4xl font-bold rotate-12 pointer-events-none animate-float opacity-30">{ }</div>
+        <div class="absolute bottom-40 right-10 text-white/5 font-mono text-4xl font-bold -rotate-12 pointer-events-none animate-float-delayed opacity-30">&lt;/&gt;</div>
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-secondary/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        <div class="absolute top-[30%] right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <section class="container mx-auto px-6 py-10 w-full z-10">
+            <div class="text-center max-w-4xl mx-auto mb-10">
+                <span class="text-primary text-xs font-bold tracking-wider uppercase font-mono opacity-70">> ./init_session --secure_link</span>
+                <h1 class="text-3xl md:text-5xl font-bold text-white mt-4 mb-4 font-display">
+                    Secure Your Consultation
+                </h1>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Select a time slot below.
+                </p>
+            </div>
+
+            <div class="terminal-window max-w-5xl mx-auto shadow-2xl border border-primary/20 bg-darker">
+                
+                <div class="terminal-header bg-black h-10">
+                    <div class="window-dot bg-red-500"></div>
+                    <div class="window-dot bg-yellow-500"></div>
+                    <div class="window-dot bg-green-500"></div>
+                    <div class="ml-auto flex items-center gap-3">
+                         <span class="text-[10px] font-mono text-green-500 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                            Encrypted
+                        </span>
+                        <div class="text-[10px] font-mono text-gray-400">outlook.office.com</div>
+                    </div>
+                </div>
+
+                <div class="relative w-full h-[800px] bg-white">
+                    <div class="absolute inset-0 flex items-center justify-center z-0 bg-gray-100">
+                        <div class="iframe-loader"></div>
+                    </div>
+                    <div class="relative z-10 w-full h-full border-primary/20 bg-darker">
+                        <iframe src='https://outlook.office.com/book/CyberPOPEPetrPospil@cyberpope.eu/?ismsaljsauthenabled' width='100%' height='3000px' scrolling='yes' style='border:0'></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6 text-xs font-mono text-gray-500">
+                <p>Connection Secure (TLS 1.3) | Data processed securely via Microsoft 365.</p>
+                <p class="mt-2">Having trouble? <a href="mailto:petr.pospisil@cyberpope.eu" class="text-primary hover:underline">Email me directly</a>.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-darker border-t border-white/5 py-12 text-sm text-gray-500 font-mono">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <div>
+                    <div class="text-white font-bold text-lg mb-2">Cyber<span class="text-primary">POPE</span></div>
+                    <p>&copy; 2025 Petr Pospíšil. All systems operational.</p>
+                </div>
+                 <div class="text-left md:text-center">
+                    <p class="text-white font-bold mb-1">Headquarters</p>
+                    <p>Korunní 2569/108, 101 00</p>
+                    <p>Praha - Vinohrady, Czech Republic</p>
+                </div>
+                <div class="text-left md:text-right">
+                     <p class="mb-2">
+                        Registration No (IČO): 
+                        <a href="https://ares.gov.cz/ekonomicke-subjekty?ico=21154856" target="_blank" class="text-primary hover:underline">21154856</a>
+                    </p>
+                    <div class="space-x-4">
+                        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+        document.querySelectorAll('#mobile-menu a').forEach(link => { menu.classList.add('hidden'); });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+

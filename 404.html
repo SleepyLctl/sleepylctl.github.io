@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Target Not Found - CyberPOPE</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFDD00',      // CyberPope Yellow
+                        primaryHover: '#E6C200', // Darker Yellow
+                        secondary: '#0057B7',    // UA Blue
+                        darker: '#0B0F19',       // Deep Background
+                        surface: '#1B263B',      // Lighter Card Background
+                        'cyber-green': '#10B981', // Terminal Green
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-darker text-white font-sans min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+
+    <div class="absolute inset-0 opacity-10" 
+         style="background-image: radial-gradient(#334155 1px, transparent 1px); background-size: 30px 30px;">
+    </div>
+
+    <div class="relative z-10 text-center px-6 max-w-lg mx-auto">
+        
+        <div class="mb-6 text-primary text-6xl opacity-80">
+            <i class="fas fa-satellite-dish"></i>
+        </div>
+
+        <h1 class="font-display font-bold text-7xl mb-2 tracking-tighter text-white">
+            404
+        </h1>
+        
+        <div class="bg-black/50 border border-white/10 rounded-lg p-4 mb-8 text-left font-mono text-sm shadow-xl backdrop-blur-sm">
+            <p class="text-gray-500">> initiating_search...</p>
+            <p class="text-gray-500">> target: <span class="text-white/80">requested_url</span></p>
+            <p class="text-red-500">> error: 404_not_found</p>
+            <p class="text-cyber-green animate-pulse">> status: lost_in_cyberspace_</p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-white mb-3">Signal Lost.</h2>
+        <p class="text-gray-400 mb-8">
+            The page you are looking for has been moved, deleted, or is hidden behind a firewall.
+        </p>
+
+        <a href="/" 
+           class="inline-flex items-center gap-2 bg-primary text-darker px-8 py-3 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] hover:shadow-[0_0_25px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5">
+            <i class="fas fa-shield-alt"></i>
+            Return to Base
+        </a>
+
+    </div>
+
+    <div class="absolute bottom-6 text-gray-600 text-xs font-mono">
+        CyberPOPE © 2025 // System Error
+    </div>
+
+</body>
+</html>
