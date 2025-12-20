@@ -157,7 +157,7 @@
     <link rel="shortcut icon" href="fav/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
     <link rel="manifest" href="fav/site.webmanifest" />
-    <meta name="theme-color" content="#020617">
+    <meta name="theme-color" content="#0f172a">
 
     <link rel="canonical" href="https://cyberpope.eu/">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -168,12 +168,12 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#FFC107',      // Cyber Yellow
-                        primaryHover: '#FFD54F', // Brighter Yellow (Optimized)
-                        secondary: '#3B82F6',    // Brighter Blue (Optimized from Navy)
-                        dark: '#0f172a',         // Slate 900
-                        darker: '#020617',       // Slate 950
-                        surface: '#1e293b',      // Slate 800
+                        primary: '#EAB308',      // Gold (Yellow-500) - Slightly richer
+                        primaryHover: '#FACC15', // Lighter Gold (Yellow-400)
+                        secondary: '#3B82F6',    // Blue-500
+                        dark: '#1e293b',         // Slate 800 (New Lighter Dark)
+                        darker: '#0f172a',       // Slate 900 (Main Background - not Black)
+                        surface: '#334155',      // Slate 700 (Lighter Panels)
                         danger: '#ef4444',       // Red 500
                     },
                     fontFamily: {
@@ -217,14 +217,37 @@
             position: relative;
         }
 
-        /* --- Brighter Glass Panel (New Design) --- */
+        /* --- Updated Glass Panel (Smoother, less harsh) --- */
         .glass-panel {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* --- Premium Paper Business Card --- */
+        .biz-card {
+            /* Matte Dark Paper Look */
+            background: linear-gradient(to bottom right, #1e293b, #0f172a); 
+            border: 1px solid rgba(234, 179, 8, 0.3); /* Subtle Gold Border */
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* Deep Shadow for elevation */
+        }
+
+        /* Subtle noise texture overlay for paper feel */
+        .biz-card::after {
+            content: "";
+            opacity: 0.03;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
         }
 
         /* --- Terminal Window Styling --- */
@@ -233,7 +256,7 @@
         }
 
         .terminal-header {
-            @apply bg-black/40 h-8 flex items-center px-3 gap-1.5 border-b border-white/5 select-none;
+            @apply bg-slate-900/80 h-8 flex items-center px-3 gap-1.5 border-b border-white/5 select-none;
         }
 
         .window-dot {
@@ -242,20 +265,15 @@
 
         /* Gradient Text */
         .gradient-text {
-            background: linear-gradient(135deg, #FFC107 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #EAB308 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Scramble Effect Styles - REQUIRED FOR SLOGAN */
+        /* Scramble Effect Styles */
         .dud {
-            color: #757575;
+            color: #94a3b8;
             opacity: 0.7;
-        }
-
-        /* Path to Mastery Arrow */
-        .mastery-arrow {
-            @apply hidden md:flex absolute top-1/2 -right-4 lg:-right-6 transform -translate-y-1/2 text-white/20 text-xl z-10;
         }
 
         /* Hover Effect for Cards */
@@ -265,12 +283,12 @@
 
         .hover-card-effect:hover {
             transform: translateY(-5px);
-            background: rgba(30, 41, 59, 0.8);
-            border-color: rgba(255, 193, 7, 0.3);
-            box-shadow: 0 10px 40px -10px rgba(255, 193, 7, 0.15);
+            background: rgba(51, 65, 85, 0.8); /* Slate 700 */
+            border-color: rgba(234, 179, 8, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(234, 179, 8, 0.15);
         }
 
-        /* Specific Hover Overrides for Solution Section */
+        /* Specific Hover Overrides */
         .hover-card-red:hover {
             border-color: rgba(239, 68, 68, 0.5) !important;
             box-shadow: 0 10px 40px -10px rgba(239, 68, 68, 0.2) !important;
@@ -286,7 +304,7 @@
             box-shadow: 0 10px 40px -10px rgba(34, 197, 94, 0.2) !important;
         }
 
-        /* --- Connecting Line (New Design) --- */
+        /* --- Connecting Line --- */
         .flow-line {
             position: absolute;
             left: 50%;
@@ -305,7 +323,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #020617;
+            background: #0f172a;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -314,7 +332,7 @@
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #FFC107;
+            background: #EAB308;
         }
     </style>
 </head>
@@ -323,15 +341,17 @@
     class="bg-darker text-gray-300 antialiased selection:bg-primary selection:text-darker flex flex-col min-h-screen font-sans">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9QZ5WF3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
-   <header
+    <header
         class="fixed w-full top-0 z-50 border-b border-white/5 bg-darker/90 backdrop-blur-md transition-all duration-300 shadow-lg">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="group flex items-center gap-3">
+            
+            <a href="/" class="group flex flex-col justify-center">
                 <div class="leading-none font-display font-bold text-2xl text-white tracking-tight">
-                    <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil <span class="text-white/30 mx-1">|</span> Cyber<span class="text-primary">POPE</span>
-                    <span
-                        class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1">Independent
-                        Consultant | Fractional CISO & Security Architect | Expert On Demand</span>
+                    <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil <span class="text-gray-600 mx-1">|</span> Cyber<span class="text-primary">POPE</span>
+                </div>
+                <div
+                    class="block text-[10px] font-sans font-medium text-gray-400 tracking-widest uppercase mt-1.5">
+                    Independent Consultant | Fractional CISO & Security Architect | Expert On Demand
                 </div>
             </a>
 
@@ -348,7 +368,7 @@
 
                 <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink"
                     target="_blank"
-                    class="bg-primary text-darker px-6 py-2.5 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] hover:shadow-[0_0_25px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5 font-display tracking-tight">
+                    class="bg-primary text-darker px-6 py-2.5 rounded font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_25px_rgba(234,179,8,0.5)] transform hover:-translate-y-0.5 font-display tracking-tight">
                     > Book Strategy Session
                 </a>
             </nav>
@@ -375,7 +395,7 @@
 
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-50 pointer-events-none">
             <div
-                class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-secondary/10 rounded-full blur-[120px] animate-pulse-slow">
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-secondary/5 rounded-full blur-[120px] animate-pulse-slow">
             </div>
             <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"></div>
         </div>
@@ -458,82 +478,67 @@
                     </div>
                 </div>
 
-               <div class="lg:w-1/2 w-full relative z-10 order-1 lg:order-2">
+                <div class="lg:w-1/2 w-full relative z-10 order-1 lg:order-2">
                     <div class="absolute inset-0 bg-primary/20 blur-[80px] rounded-full opacity-40"></div>
-                    
-                    <div class="relative group max-w-md mx-auto mb-8">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200">
+                    <div class="relative group max-w-md mx-auto mb-6">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200">
                         </div>
 
-                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl transform transition duration-500 hover:scale-[1.01]">
-                            <img src="img/petr_osce_capacity_building.jpg" alt="Petr Pospíšil Capacity Building"
+                        <div
+                            class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl transform transition duration-500 hover:scale-[1.01]">
+                            <img src="img/petr_osce_capacity_building.jpg" alt="Petr Pospíšil"
                                 class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition duration-500">
 
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-darker via-darker/80 to-transparent p-6 pt-12">
-                                <div class="font-mono text-primary text-xs font-bold mb-1">> PREVIOUS_MISSIONS</div>
-                                <div class="text-white font-bold text-xl font-display">Capacity Building</div>
-                                <div class="text-gray-400 text-sm">International Security Training</div>
+                            <div
+                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-darker via-darker/80 to-transparent p-6 pt-12">
+                                <div class="font-mono text-primary text-xs font-bold mb-1">> WHOAMI</div>
+                                <div class="text-white font-bold text-xl font-display">Petr Pospíšil</div>
+                                <div class="text-gray-400 text-sm">Security Architect & Trainer</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="max-w-[520px] mx-auto bg-[#0a0a0a] border border-white/20 shadow-2xl flex overflow-hidden relative group hover:border-primary/50 transition duration-500 font-mono">
-                        
-                        <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-white/30"></div>
-                        <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-white/30"></div>
+                    <div class="max-w-md mx-auto biz-card rounded-lg p-6 transform rotate-1 hover:rotate-0 transition duration-500">
+                        <div class="flex justify-between items-start gap-4 relative z-10">
+                            <div class="flex-grow">
+                                <h3 class="font-display font-black text-2xl text-white leading-none mb-1 tracking-tight">Petr Pospíšil</h3>
+                                <p class="text-primary font-bold text-xs uppercase tracking-widest mb-5 opacity-90 border-b border-white/10 pb-2 inline-block">Fractional CISO & Architect</p>
+                                
+                                <div class="space-y-2.5">
+                                    <div class="flex items-center gap-3 text-xs font-medium text-gray-300">
+                                        <i class="fas fa-certificate w-4 text-center text-primary"></i>
+                                        <span>Certified: <span class="text-white">CISSP, SecurityX, GCTI</span></span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs font-medium text-gray-300">
+                                        <i class="fas fa-handshake w-4 text-center text-blue-400"></i>
+                                        <span>Collaborating with <span class="text-white">UNDP & OSCE</span></span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs font-medium text-gray-300">
+                                        <i class="fas fa-history w-4 text-center text-green-500"></i>
+                                        <span>Exp: <span class="text-white">8+ Years</span> (Active Since 2016)</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs font-medium text-gray-300">
+                                        <i class="fas fa-user-shield w-4 text-center text-yellow-500"></i>
+                                        <span><span class="text-white">Public Gov</span> Trusted & Vetted</span>
+                                    </div>
 
-                        <div class="flex-1 p-6 flex flex-col justify-between gap-6">
+                                    <div class="flex items-center gap-3 text-xs font-mono text-gray-400 mt-3 pt-3 border-t border-white/5">
+                                        <i class="fas fa-envelope w-4 text-center"></i>
+                                        <a href="mailto:petr.pospisil@cyberpope.eu" class="hover:text-primary transition">petr.pospisil@cyberpope.eu</a>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <div>
-                                <h3 class="text-xl font-bold text-white uppercase tracking-widest leading-none">Petr Pospíšil</h3>
-                                <p class="text-primary text-xs font-bold uppercase tracking-wide mt-1.5">Fractional CISO & Security Architect</p>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-y-5 gap-x-4">
-                                
-                                <div>
-                                    <div class="text-white font-bold text-sm">9+ YEARS</div>
-                                    <div class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Experience</div>
-                                </div>
-
-                                <div>
-                                    <div class="text-white font-bold text-sm">Prague / Remote</div>
-                                    <div class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Base</div>
-                                </div>
-
-                                <div>
-                                    <div class="text-white font-bold text-sm leading-tight">CISSP & SecurityX</div>
-                                    <div class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Certified</div>
-                                </div>
-
-                                <div>
-                                    <div class="text-white font-bold text-sm leading-tight">Gov / UNDP / OSCE</div>
-                                    <div class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Vetted By</div>
-                                </div>
-                            </div>
-
-                            <div class="pt-4 border-t border-white/10">
-                                <a href="mailto:petr.pospisil@cyberpope.eu" class="text-white font-bold text-sm hover:text-primary transition block mb-1">petr.pospisil@cyberpope.eu</a>
-                                <div class="text-[10px] text-gray-500 mb-2 uppercase font-bold tracking-wider">Email</div>
-                                
-                                <div class="text-[10px] text-gray-400 whitespace-nowrap uppercase">
-                                    Hacker <span class="text-primary">>></span> Hunter <span class="text-primary">>></span> Manager <span class="text-primary">==</span> Partner
+                            <div class="shrink-0 flex flex-col justify-end h-full">
+                                <div class="w-20 h-20 bg-white rounded p-1 flex flex-col items-center justify-center text-darker shadow-lg">
+                                    <i class="fas fa-qrcode text-3xl mb-1"></i>
+                                    <span class="text-[6px] uppercase font-bold tracking-tight">Scan Me</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="w-36 bg-white/5 border-l border-white/10 flex flex-col items-center justify-center p-4 text-center">
-                            <div class="bg-white p-1.5 mb-3 w-24 h-24 shadow-lg">
-                                <img src="img/qr.png" 
-                                     alt="Contact QR" 
-                                     class="w-full h-full object-cover">
-                            </div>
-                            <div class="text-[10px] font-bold text-primary uppercase leading-tight animate-pulse">
-                                Scan with<br>Phone to save contact!
-                            </div>
-                        </div>
-
                     </div>
+
                 </div>
         </section>
 
@@ -567,15 +572,15 @@
                                 class="hidden md:flex absolute top-8 left-0 right-0 w-full h-0 justify-between px-6 pointer-events-none z-0">
                                 <div></div>
                                 <div
-                                    class="absolute left-[25%] -translate-x-1/2 -translate-y-1/2 bg-darker/50 rounded-full p-1">
+                                    class="absolute left-[25%] -translate-x-1/2 -translate-y-1/2 bg-darker/50 rounded-full p-1 border border-white/10">
                                     <i class="fas fa-chevron-right text-white/30 text-sm"></i>
                                 </div>
                                 <div
-                                    class="absolute left-[50%] -translate-x-1/2 -translate-y-1/2 bg-darker/50 rounded-full p-1">
+                                    class="absolute left-[50%] -translate-x-1/2 -translate-y-1/2 bg-darker/50 rounded-full p-1 border border-white/10">
                                     <i class="fas fa-chevron-right text-white/30 text-sm"></i>
                                 </div>
                                 <div
-                                    class="absolute left-[75%] -translate-x-1/2 -translate-y-1/2 bg-darker/50 rounded-full p-1">
+                                    class="absolute left-[75%] -translate-x-1/2 -translate-y-1/2 bg-darker/50 rounded-full p-1 border border-white/10">
                                     <i class="fas fa-chevron-right text-white/30 text-sm"></i>
                                 </div>
                             </div>
@@ -585,7 +590,7 @@
                                     class="w-16 h-16 rounded-full bg-darker border-2 border-red-500 flex items-center justify-center text-2xl mb-4 shadow-[0_0_20px_rgba(239,68,68,0.3)] transition transform group-hover:scale-110 glass-panel">
                                     <i class="fas fa-skull-crossbones text-red-500"></i>
                                 </div>
-                                <h4 class="text-sm font-bold text-white mb-1">Ethical Hacker</h4>
+                                <h4 class="text-sm font-bold text-white mb-1">Penetration Tester</h4>
                                 <p class="text-gray-400 text-[11px] leading-relaxed px-2">
                                     Started as a <strong>Red Teamer</strong>. I learned exactly how attackers think and
                                     exploit vulnerabilities.
@@ -925,32 +930,30 @@
                                 </div>
 
                                 <div class="flex-grow">
-                                    <h3 class="text-2xl font-bold text-white mb-3 font-display">Fractional CISO &
-                                        Strategic Governance</h3>
+                                    <h3 class="text-2xl font-bold text-white mb-3 font-display">Fractional CISO & Architect for SMEs</h3>
                                     <div
                                         class="inline-block px-3 py-1 rounded bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-4 uppercase tracking-wider">
-                                        Long-Term Engagement
+                                        The "Impossible" All-in-One Expert
                                     </div>
 
                                     <p class="text-gray-300 text-base leading-relaxed mb-6">
-                                        I serve as your long-term security partner, bridging the gap between technical
-                                        risk and business reality.
-                                        I manage your compliance roadmap (NIS2, ISO 27001), oversee budget strategy, and
-                                        communicate risk to the board.
+                                        SMEs face a critical capacity problem: you need the technical depth of a <strong>Security Analyst</strong>, the structural vision of an <strong>Architect</strong>, and the governance of a <strong>CISO</strong>—but you cannot afford three separate salaries.
+                                        <br><br>
+                                        <strong>I am the solution to that impossibility.</strong> I fit all these positions into one expert engagement. I handle your technical hardening, compliance (NIS2), and board-level strategy simultaneously.
                                     </p>
 
                                     <div class="grid sm:grid-cols-2 gap-4 border-t border-white/5 pt-4">
                                         <ul class="space-y-2 text-sm text-gray-400 font-mono">
                                             <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
-                                                Regulatory Compliance (NIS2, CRA)</li>
+                                                Governance & Technical Hardening in One</li>
                                             <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
-                                                Security Roadmap & Budgeting</li>
+                                                NIS2 Compliance for SMEs</li>
                                         </ul>
                                         <ul class="space-y-2 text-sm text-gray-400 font-mono">
                                             <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
-                                                Vendor Risk Management</li>
+                                                Eliminates Need for Multiple Hires</li>
                                             <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
-                                                Board-Level Reporting</li>
+                                                Board-Ready Risk Communication</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1006,269 +1009,4 @@
                             <div class="text-[10px] text-green-400 uppercase font-bold tracking-wide mb-4">Architecture
                                 & Implementation</div>
 
-                            <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">
-                                Build security into your product DNA. I help engineering teams implement DevSecOps
-                                pipelines and secure coding standards ("Shift Left").
-                            </div>
-
-                            <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
-                                <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> DevSecOps
-                                    Pipeline Setup</li>
-                                <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> Threat
-                                    Modeling</li>
-                                <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> Architecture
-                                    Review</li>
-                            </ul>
-                        </div>
-
-                        <div
-                            class="p-8 rounded-lg glass-panel hover-card-blue hover-card-effect border-l-4 border-blue-500 group transition duration-300 flex flex-col">
-                            <div
-                                class="text-4xl text-blue-500 mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-blue-500/10 rounded-lg">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-white mb-2 font-display">Training & Awareness</h3>
-                            <div class="text-[10px] text-blue-400 uppercase font-bold tracking-wide mb-4">Workshops &
-                                Education</div>
-
-                            <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">
-                                Eliminate the "Human Error" factor. I design and deliver custom security training
-                                programs for developers, regular staff, and management.
-                            </div>
-
-                            <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
-                                <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Tabletop
-                                    Exercises</li>
-                                <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Phishing
-                                    Simulations</li>
-                                <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Secure Coding
-                                    Workshops</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <section id="showcase" class="py-24 relative">
-            <div class="absolute inset-0 bg-primary/5 -skew-y-2 transform origin-bottom-right z-0"></div>
-
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center max-w-4xl mx-auto mb-16">
-                    <span class="text-primary text-xs font-bold tracking-wider uppercase font-mono opacity-70">>
-                        ./training_module --execute</span>
-                    <h2 class="text-4xl font-bold text-white mt-2 mb-4">Making the Complex Actionable</h2>
-                    <p class="text-xl text-gray-400 mb-8">
-                        My technical background proves I know <strong>what</strong> to do. My training experience proves
-                        I can teach your team <strong>how</strong> to do it.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="terminal-window group hover-card-effect">
-                        <div class="terminal-header">
-                            <div class="window-dot bg-gray-600"></div>
-                            <div class="window-dot bg-gray-600"></div>
-                            <div class="ml-2 text-[10px] font-mono text-gray-400">osce_risk_workshop.jpg</div>
-                        </div>
-                        <div class="relative aspect-video overflow-hidden">
-                            <img src="img/petr_trainer_OSCE.jpg" loading="eager" alt="Petr Pospíšil training OSCE team"
-                                class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6">
-                                <h4 class="text-white font-bold font-display text-lg">Simplifying Risk for Leaders</h4>
-                                <p class="text-sm text-gray-300 mt-1">Leading a "Risk Tolerance" workshop for
-                                    international stakeholders. I turn abstract threats into clear decision points for
-                                    management.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-window group hover-card-effect">
-                        <div class="terminal-header">
-                            <div class="window-dot bg-gray-600"></div>
-                            <div class="window-dot bg-gray-600"></div>
-                            <div class="ml-2 text-[10px] font-mono text-gray-400">active_defense_lecture.jpg</div>
-                        </div>
-                        <div class="relative aspect-video overflow-hidden">
-                            <img src="img/petr_women_cyber_trainer.jpg" loading="eager" alt="Petr Pospíšil lecturing"
-                                class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6">
-                                <h4 class="text-white font-bold font-display text-lg">Empowering the Frontline</h4>
-                                <p class="text-sm text-gray-300 mt-1">Delivering practical, hands-on defense training. I
-                                    ensure your staff leaves with skills they can use immediately, not just theory.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-24 container mx-auto px-6 relative">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 pointer-events-none"></div>
-
-            <div class="terminal-window max-w-5xl mx-auto p-1 relative z-10 shadow-[0_0_40px_rgba(255,193,7,0.1)]">
-                <div class="terminal-header bg-black/60">
-                    <div class="window-dot bg-red-500"></div>
-                    <div class="window-dot bg-yellow-500"></div>
-                    <div class="window-dot bg-green-500"></div>
-                    <div class="ml-auto text-[10px] font-mono text-gray-500">secure_channel_v2.Encrypted</div>
-                </div>
-                <div class="p-8 md:p-12 text-center">
-                    <h2 class="text-4xl font-bold text-primary mb-4 font-mono">Let's make the first connection.</h2>
-                    <p class="text-gray-400 mb-10 max-w-2xl mx-auto font-mono text-lg">
-                        > Book a free, no-obligation <strong>30-minute Teams call</strong>. We'll discuss your core
-                        business risk and establish a clear path to resolution.
-                    </p>
-
-                    <div class="flex flex-col lg:flex-row gap-4 justify-center items-center whitespace-nowrap">
-                        <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink"
-                            target="_blank"
-                            class="w-full lg:w-auto px-8 py-4 bg-primary text-darker rounded-lg font-bold text-sm hover:bg-primaryHover transition shadow-lg flex items-center justify-center gap-2 font-display tracking-tight h-14 min-w-[200px]">
-                            <i class="fas fa-calendar-alt"></i> Book Strategy Session
-                        </a>
-
-                        <a href="mailto:petr.pospisil@cyberpope.eu"
-                            class="w-full lg:w-auto px-8 py-4 bg-surface border border-white/10 text-white rounded-lg font-bold text-sm hover:bg-white/5 transition flex items-center justify-center gap-2 font-display tracking-tight h-14 min-w-[200px]">
-                            <i class="fas fa-envelope"></i> Send Email
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/petr-pospisil111" target="_blank"
-                            class="w-full lg:w-auto px-8 py-4 bg-surface border border-white/10 text-white rounded-lg font-bold text-sm hover:bg-white/5 transition flex items-center justify-center gap-2 font-display tracking-tight h-14 min-w-[200px]">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-darker border-t border-white/5 py-12 text-sm text-gray-500 font-mono relative z-10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                <div>
-                    <div class="text-white font-bold text-lg mb-2">Cyber<span class="text-primary">POPE</span></div>
-                    <p>&copy; 2025 Petr Pospíšil. All systems operational.</p>
-                </div>
-
-                <div class="text-left md:text-center">
-                    <p class="text-white font-bold mb-1">Headquarters</p>
-                    <p>Korunní 2569/108, 101 00</p>
-                    <p>Praha - Vinohrady, Czech Republic</p>
-                </div>
-
-                <div class="text-left md:text-right">
-                    <p class="mb-2">
-                        Registration No (IČO):
-                        <a href="https://ares.gov.cz/ekonomicke-subjekty?ico=21154856" target="_blank"
-                            class="text-primary hover:underline">21154856</a>
-                    </p>
-                    <div class="space-x-4">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-    <script>
-        // Mobile Menu Logic
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-
-        // --- CYBER SCRAMBLE EFFECT ---
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#________';
-                this.update = this.update.bind(this);
-            }
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise((resolve) => this.resolve = resolve);
-                this.queue = [];
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 5); // VERY FAST START
-                    const end = start + Math.floor(Math.random() * 15); // VERY FAST END
-                    this.queue.push({ from, to, start, end });
-                }
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
-            update() {
-                let output = '';
-                let complete = 0;
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) {
-                            char = this.randomChar();
-                            this.queue[i].char = char;
-                        }
-                        output += `<span class="dud">${char}</span>`;
-                    } else {
-                        output += from;
-                    }
-                }
-                this.el.innerHTML = output;
-                if (complete === this.queue.length) {
-                    this.resolve();
-                } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-            randomChar() {
-                return this.chars[Math.floor(Math.random() * this.chars.length)];
-            }
-        }
-
-        const phrases = [
-            "The Unknown",
-            "Ransomware",
-            "Massive Fines",
-            "Public Scandal",
-            "Data Theft",
-            "Human Error"
-        ];
-
-        const el = document.querySelector('#dynamic-slogan');
-        const fx = new TextScramble(el);
-
-        let counter = 0;
-        const next = () => {
-            fx.setText(phrases[counter]).then(() => {
-                setTimeout(next, 1200);
-            });
-            counter = (counter + 1) % phrases.length;
-        };
-
-        next();
-    </script>
-</body>
-
-</html>
+                            <div class="text-gray-400 text-xs leading-relaxed mb
