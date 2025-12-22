@@ -186,7 +186,7 @@
                         'float-delayed': 'float 8s ease-in-out 4s infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         // --- New Infinite Scroll Animation ---
-                        'scroll-vertical': 'scroll-vertical 20s linear infinite',
+                        'scroll-vertical': 'scroll-vertical 40s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -322,6 +322,11 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: #FFC107;
+        }
+
+        /* Pause animation on hover for Threat Feed */
+        .group\/feed:hover .animate-scroll-vertical {
+            animation-play-state: paused;
         }
     </style>
 </head>
@@ -477,7 +482,7 @@
                         <div
                             class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl transform transition duration-500 hover:scale-[1.01]">
                             <img src="img/petr_osce_capacity_building.jpg" alt="Petr Pospíšil Capacity Building"
-                                class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition duration-500">
+                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500">
 
                             <div
                                 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-darker via-darker/80 to-transparent p-6 pt-12">
@@ -870,60 +875,105 @@
                             class="absolute -top-10 -right-10 w-32 h-32 bg-red-500/10 blur-[40px] rounded-full animate-pulse-slow pointer-events-none">
                         </div>
 
-                        <div class="bg-darker/90 h-full w-full rounded-xl p-8 flex flex-col backdrop-blur-sm">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="w-14 h-14 rounded-lg bg-red-900/20 flex items-center justify-center border border-red-500/20 shrink-0">
-                                        <i class="fas fa-biohazard text-red-500 text-3xl group-hover:animate-pulse"></i>
-                                    </div>
+                        <div class="bg-darker/90 h-full w-full rounded-xl p-8 backdrop-blur-sm">
+                            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                                
+                                <div class="flex flex-col h-full justify-between">
                                     <div>
-                                        <h3 class="text-2xl font-bold text-white font-display leading-none">Ransomware
-                                            Reality</h3>
-                                        <div class="flex items-center gap-2 mt-2">
-                                            <span class="relative flex h-2.5 w-2.5">
-                                                <span
-                                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
-                                            </span>
-                                            <span
-                                                class="text-xs font-mono font-bold text-red-400 uppercase tracking-widest">Live
-                                                Global Feed</span>
+                                        <div class="flex items-center gap-4 mb-4">
+                                            <div class="w-14 h-14 rounded-lg bg-red-900/20 flex items-center justify-center border border-red-500/20 shrink-0">
+                                                <i class="fas fa-biohazard text-red-500 text-3xl group-hover:animate-pulse"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-white font-display leading-none">Ransomware Reality</h3>
+                                                <div class="flex items-center gap-2 mt-2">
+                                                    <span class="relative flex h-2.5 w-2.5">
+                                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                                                    </span>
+                                                    <span class="text-xs font-mono font-bold text-red-400 uppercase tracking-widest">Live Global Feed</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-gray-300 text-sm leading-relaxed mb-6 space-y-4">
+                                            <p class="font-medium text-base text-white">
+                                                Ransomware is not a technical glitch; it is a strategic business risk occurring daily. The impact strikes the three pillars of your organization's value:
+                                            </p>
+                                            
+                                            <ul class="space-y-2 border-l-2 border-white/10 pl-4">
+                                                <li>
+                                                    <strong class="text-white block mb-0.5">Availability (Ops Halted)</strong>
+                                                    <span class="text-gray-400">Operations freeze. Production lines stop. Revenue halts while overhead costs continue to burn cash.</span>
+                                                </li>
+                                                <li>
+                                                    <strong class="text-white block mb-0.5">Confidentiality (Secrets Lost)</strong>
+                                                    <span class="text-gray-400">Your trade secrets, employee records, and client lists are exfiltrated and auctioned to competitors.</span>
+                                                </li>
+                                                <li>
+                                                    <strong class="text-white block mb-0.5">Integrity (Data Corrupted)</strong>
+                                                    <span class="text-gray-400">Critical data - such as supplier bank details or financial reports—can be quietly manipulated, leading to undetected fraud and an inability to trust your own ledgers.</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+
+                                    <div class="bg-white/5 rounded-lg p-4 border border-white/10 mt-auto">
+                                        <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-3">> INTELLIGENCE_REPORT</div>
+                                        
+                                        <div class="grid grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <div class="flex items-end gap-2">
+                                                    <span id="victims-48h-count" class="text-3xl font-bold text-white leading-none">...</span>
+                                                    <span class="text-[10px] text-gray-400 mb-1 uppercase tracking-wide font-bold">Last 48 Hours</span>
+                                                </div>
+                                                <div class="h-0.5 bg-red-500/50 w-full mt-1"></div>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-end gap-2">
+                                                    <span id="victims-30d-count" class="text-3xl font-bold text-white leading-none">...</span>
+                                                    <span class="text-[10px] text-gray-400 mb-1 uppercase tracking-wide font-bold">Last 30 Days</span>
+                                                </div>
+                                                <div class="h-0.5 bg-orange-500/50 w-full mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-1">> AFFECTED_REGIONS (48h)</div>
+                                        <div id="victims-48h-countries" class="text-xs text-primary font-mono leading-relaxed mb-3">
+                                            Analyzing geo-data...
+                                        </div>
+
+                                        <div class="flex gap-2 items-start bg-black/30 p-2 rounded border border-white/5">
+                                            <i class="fas fa-exclamation-triangle text-yellow-500 text-xs mt-0.5"></i>
+                                            <p class="text-[10px] text-gray-400 italic leading-tight">
+                                                <strong>Note:</strong> This feed represents only <span class="text-white">published</span> victims. The vast majority of breaches remain under the radar - paid off, covered up, or undetected.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="text-right">
-                                    <div class="text-[10px] text-gray-500 font-mono flex items-center justify-end gap-2">
-                                        <span>> LATEST_VICTIMS.JSON</span>
-                                        <span id="victim-count" class="text-red-400 font-bold">...</span>
+
+                                <div class="border-l border-white/10 pl-0 lg:pl-8 flex flex-col h-full relative group/feed">
+                                    <div class="flex justify-between items-center mb-4 px-2">
+                                        <div class="text-[10px] text-gray-500 font-mono">> LATEST_VICTIMS.JSON</div>
+                                        <div id="victim-count" class="text-[10px] text-red-400 font-bold font-mono">...</div>
                                     </div>
-                                    <p class="text-gray-400 text-sm mt-1 max-w-lg text-left md:text-right">
-                                        It’s not "if", it’s "when". One click can encrypt your data. Downtime costs thousands per hour.
-                                    </p>
+
+                                    <div class="h-[450px] overflow-hidden relative font-mono text-sm">
+                                        <div class="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-darker to-transparent z-10 pointer-events-none"></div>
+                                        <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-darker to-transparent z-10 pointer-events-none"></div>
+
+                                        <div id="ransomware-container" class="animate-scroll-vertical">
+                                            <ul id="ransomware-feed" class="space-y-3 px-2">
+                                                <li class="text-gray-500 italic p-4 text-center">Connecting to threat intel feed...</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <a href="https://www.ransomware.live" target="_blank"
+                                        class="block mt-4 text-[10px] text-right text-gray-600 hover:text-red-400 transition cursor-pointer border-t border-dashed border-white/5 pt-3">
+                                        <i class="fas fa-satellite-dish mr-1"></i> Data provided by Ransomware.live
+                                    </a>
                                 </div>
-                            </div>
-
-                            <div class="border-t border-white/10 pt-4 flex-grow">
-                                <div class="h-64 overflow-hidden relative font-mono text-sm">
-                                    <div
-                                        class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-darker to-transparent z-10">
-                                    </div>
-                                    <div
-                                        class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-darker to-transparent z-10">
-                                    </div>
-
-                                    <div id="ransomware-container" class="animate-scroll-vertical">
-                                        <ul id="ransomware-feed" class="space-y-4">
-                                            <li class="text-gray-500 italic p-4 text-center">Connecting to threat intel feed...</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <a href="https://www.ransomware.live" target="_blank"
-                                    class="block mt-4 text-[10px] text-center text-gray-600 hover:text-red-400 transition cursor-pointer border-t border-dashed border-white/5 pt-3">
-                                    <i class="fas fa-satellite-dish mr-1"></i> Data provided by Ransomware.live
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -1242,10 +1292,33 @@
             const feedList = document.getElementById('ransomware-feed');
             const feedContainer = document.getElementById('ransomware-container');
             const countContainer = document.getElementById('victim-count');
+            const stats48hCount = document.getElementById('victims-48h-count');
+            const stats30dCount = document.getElementById('victims-30d-count');
+            const stats48hCountries = document.getElementById('victims-48h-countries');
 
-            // FETCH LOCAL DATA (Generated by GitHub Action)
-            // This bypasses CORS because the file is hosted on your own domain.
+            // FETCH LOCAL DATA
             const dataURL = 'victims.json';
+
+            // Helper to generate distinct neon colors from string
+            const stringToColor = (str) => {
+                const colors = [
+                    '#ef4444', // red-500
+                    '#f97316', // orange-500
+                    '#f59e0b', // amber-500
+                    '#84cc16', // lime-500
+                    '#10b981', // emerald-500
+                    '#06b6d4', // cyan-500
+                    '#3b82f6', // blue-500
+                    '#8b5cf6', // violet-500
+                    '#d946ef', // fuchsia-500
+                    '#f43f5e'  // rose-500
+                ];
+                let hash = 0;
+                for (let i = 0; i < str.length; i++) {
+                    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                return colors[Math.abs(hash) % colors.length];
+            };
 
             fetch(dataURL)
                 .then(response => {
@@ -1262,21 +1335,53 @@
                          return dateB - dateA;
                     });
 
+                    // --- STATS LOGIC ---
+                    const now = new Date();
+                    const fortyEightHoursAgo = new Date(now.getTime() - (48 * 60 * 60 * 1000));
+                    const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
+                    
+                    // 48 Hours Stats
+                    const recentVictims = data.filter(victim => {
+                        const victimDate = new Date(victim.attackdate || victim.discovered);
+                        return victimDate > fortyEightHoursAgo;
+                    });
+
+                    // 30 Days Stats
+                    const monthVictims = data.filter(victim => {
+                        const victimDate = new Date(victim.attackdate || victim.discovered);
+                        return victimDate > thirtyDaysAgo;
+                    });
+
+                    if (stats48hCount) stats48hCount.innerText = recentVictims.length;
+                    if (stats30dCount) stats30dCount.innerText = monthVictims.length;
+                    
+                    if (stats48hCountries) {
+                        const uniqueCountries = [...new Set(recentVictims.map(v => v.country).filter(c => c && c.length > 0))];
+                        stats48hCountries.innerText = uniqueCountries.length > 0 
+                            ? uniqueCountries.join(', ') 
+                            : 'Global Spread Detected';
+                    }
+                    // ----------------------------------------
+
                     // 2. Take top 30 to show "MANY"
                     const recent = data.slice(0, 30);
 
-                    // Update counter
-                    if (countContainer) countContainer.innerText = `[${data.length} DETECTED]`;
+                    // Update total counter
+                    if (countContainer) countContainer.innerText = `[${data.length} RECORDS]`;
 
                     // Helper to create list item
                     const createItem = (victim) => {
                          const li = document.createElement('li');
-                         li.className = 'bg-white/5 border-l-2 border-red-500/30 p-3 rounded-r hover:bg-white/10 transition-colors duration-300';
+                         // Added hover effect for highlighting
+                         li.className = 'bg-white/5 border-l-2 p-3 rounded-r hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border-white/10 cursor-default';
 
                         // Data formatting
                         const name = victim.victim.length > 40 ? victim.victim.substring(0, 38) + '..' : victim.victim;
                         const country = victim.country ? victim.country : 'UNK';
                         const date = victim.attackdate ? victim.attackdate.split(' ')[0] : 'N/A';
+                        
+                        // Get distinct color for the group
+                        const groupColor = stringToColor(victim.group || 'unknown');
                         
                         let ransomInfo = '';
                         if (victim.extrainfos && victim.extrainfos.ransom) {
@@ -1285,12 +1390,12 @@
 
                         li.innerHTML = `
                             <div class="flex justify-between items-center mb-1">
-                                <span class="text-white font-bold text-sm md:text-base">${name}</span>
-                                <span class="text-gray-400 text-xs font-mono bg-black/40 px-2 py-0.5 rounded border border-white/5">${country}</span>
+                                <span class="text-white font-bold text-xs md:text-sm truncate pr-2">${name}</span>
+                                <span class="text-gray-400 text-[10px] font-mono bg-black/40 px-1.5 py-0.5 rounded border border-white/5">${country}</span>
                             </div>
-                            <div class="flex justify-between items-center text-xs text-gray-400 font-mono">
+                            <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono">
                                 <div class="flex items-center gap-3">
-                                    <span class="text-red-400 font-bold uppercase"><i class="fas fa-skull-crossbones text-[10px] mr-1"></i> ${victim.group}</span>
+                                    <span class="font-bold uppercase" style="color: ${groupColor}"><i class="fas fa-skull-crossbones text-[9px] mr-1"></i> ${victim.group}</span>
                                     <span><i class="far fa-calendar-alt mr-1"></i> ${date}</span>
                                 </div>
                                 <div>${ransomInfo}</div>
@@ -1305,7 +1410,6 @@
                     });
                     
                     // 4. DUPLICATE content for seamless loop
-                    // We simply clone the children we just added and append them again
                     const originalItems = Array.from(feedList.children);
                     originalItems.forEach(item => {
                         feedList.appendChild(item.cloneNode(true));
@@ -1314,7 +1418,6 @@
                 })
                 .catch(error => {
                     console.log('Feed unavailable:', error);
-                    // Fallback UI if file doesn't exist yet
                     feedList.innerHTML = `
                 <li class="text-gray-500 text-xs italic py-2">
                    <i class="fas fa-circle-notch animate-spin mr-2"></i> Initializing Threat Feed...<br>
