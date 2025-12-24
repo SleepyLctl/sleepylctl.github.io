@@ -1,9 +1,10 @@
+
 name: Update Ransomware Feed
 
 on:
   schedule:
-    - cron: '0 */18 * * *' # Runs every 18 hours
-  workflow_dispatch:       # Allows manual triggering for testing
+    - cron: '0 */18 * * *' # Runs every 6 hours
+  workflow_dispatch: # Allows you to run it manually from the Actions tab for testing
 
 permissions:
   contents: write
@@ -14,18 +15,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        # API_KEY was removed from here because checkout doesn't need it
 
-      - name: Fetch Threat Data (Pro API)
-        # FIX: The env block is now attached to the step that runs the curl command
-        env: 
-          API_KEY: ${{ secrets.RANSOMWARE_LIVE_API_KEY }}
-        run: |
-          # Fetches recent victims from the Pro API
-          curl -s "https://api-pro.ransomware.live/victims/recent?order=attacked" \
-          -H "X-API-KEY: ${API_KEY}" \
-          -H 'accept: application/json' \
-          -o victims.json
+      - name: Fetch Threat Data
+        run: curl -s "https://api.ransomware.live/v2/recentvictims" -o victims.json
 
       - name: Commit and Push Data
         uses: stefanzweifel/git-auto-commit-action@v5
