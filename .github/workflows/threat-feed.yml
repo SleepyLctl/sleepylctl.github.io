@@ -20,7 +20,7 @@ jobs:
           API_KEY: ${{ secrets.RANSOMWARE_LIVE_API_KEY }}
         run: |
           # Fetches recent victims from the Pro API
-          curl -s -H "x-api-key: ${API_KEY}" "https://api-pro.ransomware.live/victims/recent?order=attacked" -o victims.json
+          curl -s "https://api-pro.ransomware.live/victims/recent?order=attacked" -H "X-API-KEY: ${API_KEY}"  -H 'accept: application/json' -o victims.json
 
       - name: Commit and Push Data
         uses: stefanzweifel/git-auto-commit-action@v5
