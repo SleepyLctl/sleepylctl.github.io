@@ -2,7 +2,6 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSME0MC09W"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -156,6 +155,14 @@
         "@id": "https://www.cyberpope.eu/#organization"
       },
       "description": "Penetration tests and security audits to identify and fix vulnerabilities before exploitation."
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Personal OSINT Research",
+      "provider": {
+        "@id": "https://www.cyberpope.eu/#organization"
+      },
+      "description": "Digital footprint mapping and privacy removal recommendations for individuals."
     }
   ]
 }
@@ -321,6 +328,11 @@
             box-shadow: 0 10px 40px -10px rgba(34, 197, 94, 0.2) !important;
         }
 
+        .hover-card-purple:hover {
+            border-color: rgba(168, 85, 247, 0.5) !important;
+            box-shadow: 0 10px 40px -10px rgba(168, 85, 247, 0.2) !important;
+        }
+
         .flow-line {
             position: absolute;
             left: 50%;
@@ -370,7 +382,7 @@
                     <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil <span
                         class="text-white/30 mx-1">|</span> Cyber<span class="text-primary">POPE</span>
                     <span
-                        class="block text-[10px] font-mono font-medium text-gray-400 tracking-wider uppercase mt-1">Independent
+                        class="block text-[10px] font-mono font-medium text-gray-400 tracking-wider uppercase mt-3 leading-tight">Independent
                         Consultant | Cyber Security Architect & Fractional CISO | Expert On Demand</span>
                 </div>
             </a>
@@ -394,7 +406,7 @@
             </nav>
 
             <button id="mobile-menu-btn" aria-label="Open Mobile Menu"
-                class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition">
+                class="md:hidden text-2xl text-white hover:text-primary focus:outline-none transition p-2">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
@@ -1139,7 +1151,7 @@
                         <div class="h-px flex-1 bg-white/10"></div>
                     </div>
 
-                    <div class="grid md:grid-cols-3 gap-8">
+                    <div class="grid md:grid-cols-2 gap-8">
                         <div
                             class="p-8 rounded-lg glass-panel hover-card-red hover-card-effect border-l-4 border-red-500 group transition duration-300 flex flex-col">
                             <div
@@ -1204,6 +1216,50 @@
                                     Simulations</li>
                                 <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Secure Coding
                                     Workshops</li>
+                            </ul>
+                        </div>
+                        <div
+                            class="p-8 rounded-lg glass-panel hover-card-purple hover-card-effect border-l-4 border-purple-500 group transition duration-300 flex flex-col">
+                            <div
+                                class="text-4xl text-purple-500 mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-purple-500/10 rounded-lg">
+                                <i class="fas fa-user-secret" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2 font-display flex items-center gap-2 flex-wrap">
+                                Personal
+                                <div class="relative group/tooltip cursor-help">
+                                    <span
+                                        class="border-b border-dashed border-purple-500/50 hover:border-purple-500 transition">OSINT</span>
+                                    <div
+                                        class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 p-4 bg-surface/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 z-50 text-left pointer-events-none">
+                                        <div
+                                            class="text-white font-bold text-xs mb-1 uppercase tracking-wider text-purple-400">
+                                            Plain English:</div>
+                                        <p class="text-xs text-gray-300 leading-relaxed font-sans font-normal">
+                                            Open Source Intelligence. It means searching the public internet to find
+                                            what information (photos, passwords, addresses) exists about you, so you can
+                                            remove it.
+                                        </p>
+                                        <div
+                                            class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-surface/95 border-b border-r border-white/10 rotate-45">
+                                        </div>
+                                    </div>
+                                </div>
+                                & Privacy
+                            </h3>
+                            <div class="text-[10px] text-purple-400 uppercase font-bold tracking-wide mb-4 font-mono">
+                                Digital Footprint / VIP Protection</div>
+                            <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">
+                                For managers and individuals in sensitive situations. I research what is stored about you
+                                on the internet to map your digital footprint. You receive a report of findings and
+                                actionable recommendations for removal and privacy hardening.
+                            </div>
+                            <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
+                                <li class="flex gap-2 items-center"><span class="text-purple-500">✓</span> Deep Web &
+                                    Social Media Audit</li>
+                                <li class="flex gap-2 items-center"><span class="text-purple-500">✓</span> PII & Data
+                                    Leak Search</li>
+                                <li class="flex gap-2 items-center"><span class="text-purple-500">✓</span> Removal &
+                                    Cleanup Guidance</li>
                             </ul>
                         </div>
                     </div>
