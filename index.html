@@ -1043,14 +1043,35 @@
 
                     <div class="grid md:grid-cols-2 gap-8">
                         <div
-                            class="p-8 rounded-2xl bg-gradient-to-br from-surface to-darker border border-white/5 hover:border-red-500/50 transition-all duration-300 group shadow-lg flex flex-col items-center text-center">
-                            <i class="fas fa-gavel text-red-500 text-5xl mb-4 group-hover:scale-110 transition duration-300"
-                                aria-hidden="true"></i>
-                            <h3 class="text-xl font-bold text-white mb-2 font-display">Regulatory Hammers</h3>
-                            <p class="text-gray-400 text-sm"><strong>NIS2</strong> and the <strong>Cyber Resilience
-                                    Act</strong> are here. Non-compliance means massive fines and personal liability for
-                                executives. Are your documents ready for an audit tomorrow?</p>
-                        </div>
+    class="p-8 rounded-2xl bg-gradient-to-br from-surface to-darker border border-white/5 hover:border-red-500/50 transition-all duration-300 group shadow-lg flex flex-col h-full">
+    <div class="flex items-center gap-4 mb-6">
+        <div
+            class="w-14 h-14 rounded-lg bg-red-900/20 flex items-center justify-center border border-red-500/20 shrink-0">
+            <i class="fas fa-gavel text-red-500 text-3xl group-hover:scale-110 transition duration-300"
+                aria-hidden="true"></i>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold text-white font-display leading-none">Regulatory Hammers</h3>
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-widest">NIS2 | DORA | CRA | ISO 27001</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-left w-full space-y-4 text-sm text-gray-400 flex-grow">
+        <p class="leading-relaxed text-xs mb-2">
+            Compliance is not just a checkbox; it's a culture. Navigating the alphabet soup of regulations requires
+            more than just templates—it requires strategic alignment with your business goals.
+        </p>
+
+        <ul class="space-y-3">
+            <li class="pl-3 border-l-2 border-red-500/30">
+                <strong class="text-white block text-xs uppercase tracking-wide mb-0.5">Gap Analysis & Readiness</strong>
+                Identify where you stand against NIS2, DORA, or ISO 27001 requirements and get a roadmap to compliance.
+            </li>
+        </ul>
+    </div>
+</div>
                         <div class="p-8 rounded-2xl bg-gradient-to-br from-surface to-darker border border-white/5 hover:border-red-500/50 transition-all duration-300 group shadow-lg flex flex-col h-full">
     <div class="flex items-center gap-4 mb-6">
         <div class="w-14 h-14 rounded-lg bg-red-900/20 flex items-center justify-center border border-red-500/20 shrink-0">
@@ -1490,68 +1511,95 @@
             return colors[Math.abs(hash) % colors.length];
         };
 
+        // EU COUNTRY CONFIG (ISO CODES + MAP)
+        const euCountryCodes = [
+            'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'
+        ];
+        
+        const regionNames = {
+            'AT': 'Austria', 'BE': 'Belgium', 'BG': 'Bulgaria', 'HR': 'Croatia', 'CY': 'Cyprus', 
+            'CZ': 'Czech Rep.', 'DK': 'Denmark', 'EE': 'Estonia', 'FI': 'Finland', 'FR': 'France', 
+            'DE': 'Germany', 'GR': 'Greece', 'HU': 'Hungary', 'IE': 'Ireland', 'IT': 'Italy', 
+            'LV': 'Latvia', 'LT': 'Lithuania', 'LU': 'Luxembourg', 'MT': 'Malta', 'NL': 'Netherlands', 
+            'PL': 'Poland', 'PT': 'Portugal', 'RO': 'Romania', 'SK': 'Slovakia', 'SI': 'Slovenia', 
+            'ES': 'Spain', 'SE': 'Sweden', 'GB': 'UK', 'UK': 'UK', 'US': 'USA'
+        };
+
         fetch('victims.json')
             .then(response => {
                 if (!response.ok) throw new Error("Threat feed not yet generated");
                 return response.json();
             })
             .then(data => {
-                // 1. DEFINE EU COUNTRIES (Strict)
-                const euCountries = [
-                    "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", 
-                    "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", 
-                    "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", 
-                    "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"
-                ];
-
-                // 2. SORT (Priority: EU > Ransom Amount > Date)
+                // 1. SORT (Priority: EU > Ransom Amount > Date)
                 data.sort((a, b) => {
-                    const isEuA = euCountries.includes(a.country);
-                    const isEuB = euCountries.includes(b.country);
-                    if (isEuA !== isEuB) return isEuB ? 1 : -1; // Prioritize EU
+                    // Check if country is in EU list
+                    const isEuA = euCountryCodes.includes(a.country);
+                    const isEuB = euCountryCodes.includes(b.country);
+                    
+                    // Priority 1: EU Countries First
+                    if (isEuA !== isEuB) return isEuB ? 1 : -1; 
 
+                    // Priority 2: Has Ransom Info (Cost)
                     const hasRansomA = a.extrainfos && a.extrainfos.ransom ? 1 : 0;
                     const hasRansomB = b.extrainfos && b.extrainfos.ransom ? 1 : 0;
-                    if (hasRansomA !== hasRansomB) return hasRansomB - hasRansomA; // Secondary: Has Ransom Info
+                    if (hasRansomA !== hasRansomB) return hasRansomB - hasRansomA;
                     
+                    // Priority 3: Date (Newest first)
                     const dateA = parseDate(a.attackdate || a.discovered);
                     const dateB = parseDate(b.attackdate || b.discovered);
-                    return dateB - dateA; // Tertiary: Date (Newest first)
+                    return dateB - dateA; 
                 });
 
-                // STATS
+                // STATS - 24 Hours
                 const now = new Date();
                 const twentyFourHoursAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
                 const recentVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > twentyFourHoursAgo);
                 if (stats48hCount) stats48hCount.innerText = recentVictims.length;
                 if (countContainer) countContainer.innerText = `[${data.length} RECORDS]`;
 
-                // 7 Days Stats
+                // STATS - 7 Days
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
                 const weeklyVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > sevenDaysAgo);
                 if (stats7dCount) stats7dCount.innerText = weeklyVictims.length;
 
-                // EU Regions Impacted (Last 30 Days)
+                // STATS - EU Regions Impacted (Last 30 Days)
                 const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
-                const recentEUVictims = data.filter(v => parseDate(v.attackdate || v.discovered) > thirtyDaysAgo && euCountries.includes(v.country));
-                const affectedEU = new Set(recentEUVictims.map(v => v.country));
+                
+                // Filter for EU countries within 30 days
+                const recentEUVictims = data.filter(v => {
+                    const d = parseDate(v.attackdate || v.discovered);
+                    return d > thirtyDaysAgo && euCountryCodes.includes(v.country);
+                });
+
+                // Extract unique country codes and map to names
+                const uniqueEUCodes = new Set(recentEUVictims.map(v => v.country));
+                const affectedEUNames = Array.from(uniqueEUCodes)
+                    .map(code => regionNames[code] || code) // Use name if available, else code
+                    .sort();
                 
                 if (regionsContainer) {
-                    if (affectedEU.size > 0) {
-                        regionsContainer.innerHTML = Array.from(affectedEU).sort().join(', ');
+                    if (affectedEUNames.length > 0) {
+                        regionsContainer.innerHTML = affectedEUNames.join(', ');
+                        regionsContainer.classList.add("text-primary"); // Highlight color
                     } else {
                         regionsContainer.innerText = "None in last 30 days";
+                        regionsContainer.classList.remove("text-primary");
                     }
                 }
 
-                // 3. RENDER
-                const recent = data.slice(0, 30);
+                // 3. RENDER FEED
+                const feedLimit = 30;
+                const recent = data.slice(0, feedLimit);
                 const fragment = document.createDocumentFragment();
 
                 recent.forEach(victim => {
                     const li = document.createElement('li');
-                    const countryName = victim.country || 'UNK';
-                    const isTarget = euCountries.includes(countryName);
+                    const countryCode = victim.country || 'UNK';
+                    const countryDisplay = regionNames[countryCode] || countryCode;
+                    
+                    // Check strict EU membership for highlighting
+                    const isTarget = euCountryCodes.includes(countryCode);
 
                     // STYLE: Highlight EU Countries, Dim Others
                     li.className = isTarget 
@@ -1578,7 +1626,7 @@
                                 <div class="w-1.5 h-1.5 rounded-full ${isTarget ? 'bg-primary shadow-[0_0_5px_rgba(255,193,7,0.8)]' : 'bg-gray-500'}"></div>
                                 <span class="${isTarget ? 'text-white font-bold' : 'text-gray-400'} text-xs font-mono tracking-tight transition-colors">${name}</span>
                             </div>
-                            <span class="text-[9px] font-mono ${isTarget ? 'text-primary border-primary/30 bg-primary/10' : 'text-gray-600 border-white/5 bg-black/20'} border px-1.5 rounded">${countryName}</span>
+                            <span class="text-[9px] font-mono ${isTarget ? 'text-primary border-primary/30 bg-primary/10' : 'text-gray-600 border-white/5 bg-black/20'} border px-1.5 rounded" title="${countryCode}">${countryDisplay}</span>
                         </div>
                         <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono border-t border-white/5 pt-1.5 mt-1">
                             <span class="uppercase tracking-wider font-bold" style="color: ${groupColor}"><i class="fas fa-biohazard mr-1 opacity-70"></i>${victim.group}</span>
