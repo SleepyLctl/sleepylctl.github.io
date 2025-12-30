@@ -1411,235 +1411,193 @@
         </div>
     </footer>
 
-    <script>
-        // --- TEXT SCRAMBLE CLASS ---
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#________';
-                this.update = this.update.bind(this);
+   <script>
+    // --- TEXT SCRAMBLE CLASS ---
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '!<>-_\\/[]{}—=+*^?#________';
+            this.update = this.update.bind(this);
+        }
+        setText(newText) {
+            const oldText = this.el.innerText;
+            const length = Math.max(oldText.length, newText.length);
+            const promise = new Promise((resolve) => this.resolve = resolve);
+            this.queue = [];
+            for (let i = 0; i < length; i++) {
+                const from = oldText[i] || '';
+                const to = newText[i] || '';
+                const start = Math.floor(Math.random() * 5);
+                const end = start + Math.floor(Math.random() * 15);
+                this.queue.push({ from, to, start, end });
             }
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise((resolve) => this.resolve = resolve);
-                this.queue = [];
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 5);
-                    const end = start + Math.floor(Math.random() * 15);
-                    this.queue.push({ from, to, start, end });
-                }
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
-            update() {
-                let output = '';
-                let complete = 0;
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) {
-                            char = this.randomChar();
-                            this.queue[i].char = char;
-                        }
-                        output += `<span class="dud">${char}</span>`;
-                    } else {
-                        output += from;
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+            return promise;
+        }
+        update() {
+            let output = '';
+            let complete = 0;
+            for (let i = 0, n = this.queue.length; i < n; i++) {
+                let { from, to, start, end, char } = this.queue[i];
+                if (this.frame >= end) {
+                    complete++;
+                    output += to;
+                } else if (this.frame >= start) {
+                    if (!char || Math.random() < 0.28) {
+                        char = this.randomChar();
+                        this.queue[i].char = char;
                     }
-                }
-                this.el.innerHTML = output;
-                if (complete === this.queue.length) {
-                    this.resolve();
+                    output += `<span class="dud">${char}</span>`;
                 } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
+                    output += from;
                 }
             }
-            randomChar() {
-                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            this.el.innerHTML = output;
+            if (complete === this.queue.length) {
+                this.resolve();
+            } else {
+                this.frameRequest = requestAnimationFrame(this.update);
+                this.frame++;
             }
         }
+        randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+        }
+    }
 
-        // --- RANSOMWARE THREAT FEED (LOCAL INGEST) ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const feedList = document.getElementById('ransomware-feed');
-            const countContainer = document.getElementById('victim-count');
-            const stats48hCount = document.getElementById('victims-48h-count');
-            const stats30dCount = document.getElementById('victims-30d-count');
-            const stats48hCountries = document.getElementById('victims-48h-countries');
+    // --- RANSOMWARE THREAT FEED ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const feedList = document.getElementById('ransomware-feed');
+        const countContainer = document.getElementById('victim-count');
+        const stats48hCount = document.getElementById('victims-48h-count');
+        
+        // DATE PARSER
+        const parseDate = (dateStr) => {
+            if (!dateStr) return new Date(0);
+            return new Date(dateStr.replace(' ', 'T'));
+        };
 
-            // --- DATE HELPER FUNCTION ---
-            // Fixes issue where "2025-12-24 05:05:13.971850" (space separated) causes Invalid Date in some browsers (e.g. Safari)
-            const parseDate = (dateStr) => {
-                if (!dateStr) return new Date(0); // Fallback for null/empty
-                // Replace space with T for ISO format compliance if needed
-                return new Date(dateStr.replace(' ', 'T'));
-            };
-
-            // Helper: Generate consistent colors from strings
-            const stringToColor = (str) => {
-                const colors = ['#ef4444', '#f97316', '#f59e0b', '#84cc16', '#10b981', '#06b6d4', '#3b82f6', '#8b5cf6', '#d946ef', '#f43f5e'];
-                let hash = 0;
-                for (let i = 0; i < str.length; i++) {
-                    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-                }
-                return colors[Math.abs(hash) % colors.length];
-            };
-
-            fetch('victims.json')
-                .then(response => {
-                    if (!response.ok) throw new Error("Threat feed not yet generated");
-                    return response.json();
-                })
-                .then(data => {
-                    // 1. DEFINE HIGH INCOME / EU COUNTRIES TO HIGHLIGHT
-                    const targetCountries = [
-                        "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", 
-                        "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", 
-                        "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", 
-                        "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", 
-                        "United Kingdom", "Switzerland", "Norway", "USA", "Canada"
-                    ];
-
-                    // 2. SORTING LOGIC: 
-                    // Priority 1: Has Ransom Price? -> Priority 2: Newest Date
-                    data.sort((a, b) => {
-                        const hasRansomA = a.extrainfos && a.extrainfos.ransom ? 1 : 0;
-                        const hasRansomB = b.extrainfos && b.extrainfos.ransom ? 1 : 0;
-                        
-                        // If one has ransom and the other doesn't, put the one with ransom first
-                        if (hasRansomA !== hasRansomB) {
-                            return hasRansomB - hasRansomA;
-                        }
-
-                        // Otherwise sort by date
-                        const dateA = parseDate(a.attackdate || a.discovered);
-                        const dateB = parseDate(b.attackdate || b.discovered);
-                        return dateB - dateA;
-                    });
-
-                    // --- STATS LOGIC (Unchanged) ---
-                    const now = new Date();
-                    const twentyFourHoursAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-                    const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
-
-                    const recentVictims = data.filter(victim => {
-                        const victimDate = parseDate(victim.attackdate || victim.discovered);
-                        return victimDate > twentyFourHoursAgo;
-                    });
-                    
-                    if (stats48hCount) stats48hCount.innerText = recentVictims.length;
-                    
-                    // 3. RENDER LIST WITH HIGHLIGHTS
-                    // Display top 30 items
-                    const recent = data.slice(0, 30);
-                    if (countContainer) countContainer.innerText = `[${data.length} RECORDS]`;
-
-                    const fragment = document.createDocumentFragment();
-
-                    recent.forEach(victim => {
-                        const li = document.createElement('li');
-                        const countryName = victim.country || 'UNK';
-                        const isTarget = targetCountries.includes(countryName);
-
-                        // STYLE LOGIC: 
-                        // If Target/EU -> Bright, Standard Opacity
-                        // If Other -> Dimmed, Lower Opacity
-                        const containerClass = isTarget 
-                            ? 'group relative bg-white/10 border-l-[3px] border-primary/50 p-3 rounded-r hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden'
-                            : 'group relative bg-white/5 border-l-[3px] border-white/5 p-3 rounded-r hover:border-white/20 transition-all duration-300 cursor-default overflow-hidden opacity-60 hover:opacity-100 grayscale hover:grayscale-0';
-
-                        li.className = containerClass;
-
-                        const name = victim.victim.length > 35 ? victim.victim.substring(0, 33) + '..' : victim.victim;
-                        const dateRaw = victim.attackdate || victim.discovered;
-                        const date = dateRaw ? dateRaw.split(' ')[0] : 'N/A';
-                        const groupColor = stringToColor(victim.group || 'unknown');
-
-                        // Ransomware badge logic
-                        let ransomBadge = '';
-                        if (victim.extrainfos && victim.extrainfos.ransom) {
-                            ransomBadge = `
-                            <div class="absolute right-2 top-2 z-10">
-                                <span class="flex items-center gap-1 text-[9px] font-bold text-darker bg-red-500 px-2 py-0.5 rounded shadow-[0_0_10px_rgba(239,68,68,0.6)] animate-pulse">
-                                    <i class="fas fa-dollar-sign"></i> ${victim.extrainfos.ransom}
-                                </span>
-                            </div>`;
-                        }
-
-                        li.innerHTML = `
-                            ${ransomBadge}
-                            <div class="grid grid-cols-[1fr_auto] gap-2 items-center mb-1.5">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-1.5 h-1.5 rounded-full ${isTarget ? 'bg-primary shadow-[0_0_5px_rgba(255,193,7,0.8)]' : 'bg-gray-500'}"></div>
-                                    <span class="${isTarget ? 'text-white font-bold' : 'text-gray-400'} text-xs font-mono tracking-tight transition-colors">${name}</span>
-                                </div>
-                                <span class="text-[9px] font-mono ${isTarget ? 'text-primary border-primary/30 bg-primary/10' : 'text-gray-600 border-white/5 bg-black/20'} border px-1.5 rounded">${countryName}</span>
-                            </div>
-                            
-                            <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono border-t border-white/5 pt-1.5 mt-1">
-                                <span class="uppercase tracking-wider font-bold" style="color: ${groupColor}">
-                                    <i class="fas fa-biohazard mr-1 opacity-70"></i>${victim.group}
-                                </span>
-                                <span class="opacity-60 group-hover:opacity-100 transition-opacity">
-                                    ${date}
-                                </span>
-                            </div>
-                        `;
-                        fragment.appendChild(li);
-                    });
-
-                    feedList.innerHTML = '';
-                    feedList.appendChild(fragment);
-
-                    const originalItems = Array.from(feedList.children);
-                    originalItems.forEach(item => {
-                        feedList.appendChild(item.cloneNode(true));
-                    });
-                })
-
-
-
-                .catch(error => {
-                    console.log('Feed unavailable:', error);
-                    feedList.innerHTML = `
-                        <li class="text-gray-500 text-xs italic py-2 text-center">
-                           <i class="fas fa-circle-notch animate-spin mr-2"></i> Initializing Threat Feed...<br>
-                           <span class="text-[9px] opacity-50">(Waiting for CI/CD Pipeline)</span>
-                        </li>`;
-                });
-
-            // --- MOBILE MENU ---
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            if (btn && menu) {
-                btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
-                document.querySelectorAll('#mobile-menu a').forEach(link => {
-                    link.addEventListener('click', () => { menu.classList.add('hidden'); });
-                });
+        // COLOR GENERATOR
+        const stringToColor = (str) => {
+            const colors = ['#ef4444', '#f97316', '#f59e0b', '#84cc16', '#10b981', '#06b6d4', '#3b82f6', '#8b5cf6', '#d946ef', '#f43f5e'];
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
             }
+            return colors[Math.abs(hash) % colors.length];
+        };
 
-            // --- SCRAMBLE EFFECT INIT ---
+        fetch('victims.json')
+            .then(response => {
+                if (!response.ok) throw new Error("Threat feed not yet generated");
+                return response.json();
+            })
+            .then(data => {
+                // 1. HIGHLIGHT LIST
+                const targetCountries = [
+                    "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", 
+                    "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", 
+                    "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", 
+                    "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", 
+                    "United Kingdom", "UK", "Great Britain", "Switzerland", "Norway", "USA", "United States", "Canada"
+                ];
+
+                // 2. SORT (Ransom $$$ First, then Date)
+                data.sort((a, b) => {
+                    const hasRansomA = a.extrainfos && a.extrainfos.ransom ? 1 : 0;
+                    const hasRansomB = b.extrainfos && b.extrainfos.ransom ? 1 : 0;
+                    if (hasRansomA !== hasRansomB) return hasRansomB - hasRansomA;
+                    
+                    const dateA = parseDate(a.attackdate || a.discovered);
+                    const dateB = parseDate(b.attackdate || b.discovered);
+                    return dateB - dateA;
+                });
+
+                // STATS
+                const now = new Date();
+                const twentyFourHoursAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
+                const recentVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > twentyFourHoursAgo);
+                if (stats48hCount) stats48hCount.innerText = recentVictims.length;
+                if (countContainer) countContainer.innerText = `[${data.length} RECORDS]`;
+
+                // 3. RENDER
+                const recent = data.slice(0, 30);
+                const fragment = document.createDocumentFragment();
+
+                recent.forEach(victim => {
+                    const li = document.createElement('li');
+                    const countryName = victim.country || 'UNK';
+                    const isTarget = targetCountries.includes(countryName);
+
+                    // STYLE: Highlight Target Countries, Dim Others
+                    li.className = isTarget 
+                        ? 'group relative bg-white/10 border-l-[3px] border-primary/50 p-3 rounded-r hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden'
+                        : 'group relative bg-white/5 border-l-[3px] border-white/5 p-3 rounded-r hover:border-white/20 transition-all duration-300 cursor-default overflow-hidden opacity-60 hover:opacity-100 grayscale hover:grayscale-0';
+
+                    const name = victim.victim.length > 35 ? victim.victim.substring(0, 33) + '..' : victim.victim;
+                    const date = (victim.attackdate || victim.discovered || 'N/A').split(' ')[0];
+                    const groupColor = stringToColor(victim.group || 'unknown');
+
+                    let ransomBadge = '';
+                    if (victim.extrainfos && victim.extrainfos.ransom) {
+                        ransomBadge = `<div class="absolute right-2 top-2 z-10">
+                            <span class="flex items-center gap-1 text-[9px] font-bold text-darker bg-red-500 px-2 py-0.5 rounded shadow-[0_0_10px_rgba(239,68,68,0.6)] animate-pulse">
+                                <i class="fas fa-dollar-sign"></i> ${victim.extrainfos.ransom}
+                            </span>
+                        </div>`;
+                    }
+
+                    li.innerHTML = `
+                        ${ransomBadge}
+                        <div class="grid grid-cols-[1fr_auto] gap-2 items-center mb-1.5">
+                            <div class="flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 rounded-full ${isTarget ? 'bg-primary shadow-[0_0_5px_rgba(255,193,7,0.8)]' : 'bg-gray-500'}"></div>
+                                <span class="${isTarget ? 'text-white font-bold' : 'text-gray-400'} text-xs font-mono tracking-tight transition-colors">${name}</span>
+                            </div>
+                            <span class="text-[9px] font-mono ${isTarget ? 'text-primary border-primary/30 bg-primary/10' : 'text-gray-600 border-white/5 bg-black/20'} border px-1.5 rounded">${countryName}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono border-t border-white/5 pt-1.5 mt-1">
+                            <span class="uppercase tracking-wider font-bold" style="color: ${groupColor}"><i class="fas fa-biohazard mr-1 opacity-70"></i>${victim.group}</span>
+                            <span class="opacity-60 group-hover:opacity-100 transition-opacity">${date}</span>
+                        </div>`;
+                    fragment.appendChild(li);
+                });
+
+                feedList.innerHTML = '';
+                feedList.appendChild(fragment);
+                
+                // Clone for infinite scroll
+                Array.from(feedList.children).forEach(item => feedList.appendChild(item.cloneNode(true)));
+            })
+            .catch(error => {
+                console.log('Feed unavailable:', error);
+                feedList.innerHTML = `<li class="text-gray-500 text-xs italic py-2 text-center"><i class="fas fa-circle-notch animate-spin mr-2"></i> Initializing Feed...</li>`;
+            });
+
+        // --- MOBILE MENU ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+        }
+
+        // --- SCRAMBLE EFFECT ---
+        const el = document.querySelector('#dynamic-slogan');
+        if (el) {
             const phrases = ["The Unknown", "Ransomware", "Fines", "Public Scandal", "Data Theft", "Human Error"];
-            const el = document.querySelector('#dynamic-slogan');
-            if (el) {
-                const fx = new TextScramble(el);
-                let counter = 0;
-                const next = () => {
-                    fx.setText(phrases[counter]).then(() => { setTimeout(next, 1200); });
-                    counter = (counter + 1) % phrases.length;
-                };
-                next();
-            }
-        });
-    </script>
+            const fx = new TextScramble(el);
+            let counter = 0;
+            const next = () => {
+                fx.setText(phrases[counter]).then(() => setTimeout(next, 1200));
+                counter = (counter + 1) % phrases.length;
+            };
+            next();
+        }
+    });
+</script>
 </body>
 
 </html>
