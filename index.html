@@ -1472,6 +1472,8 @@
         const feedList = document.getElementById('ransomware-feed');
         const countContainer = document.getElementById('victim-count');
         const stats48hCount = document.getElementById('victims-48h-count');
+        const stats7dCount = document.getElementById('victims-30d-count');
+        const regionsContainer = document.getElementById('victims-48h-countries');
         
         // DATE PARSER
         const parseDate = (dateStr) => {
@@ -1521,6 +1523,15 @@
                 const recentVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > twentyFourHoursAgo);
                 if (stats48hCount) stats48hCount.innerText = recentVictims.length;
                 if (countContainer) countContainer.innerText = `[${data.length} RECORDS]`;
+
+                // 7 Days
+                const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
+                const weeklyVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > sevenDaysAgo);
+                if (stats7dCount) stats7dCount.innerText = weeklyVictims.length;
+
+                // Regions
+                const uniqueCountries = new Set(data.map(v => v.country).filter(c => c && c.trim().length > 0));
+                if (regionsContainer) regionsContainer.innerText = `${uniqueCountries.size} Unique Regions`;
 
                 // 3. RENDER
                 const recent = data.slice(0, 30);
