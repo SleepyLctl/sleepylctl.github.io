@@ -1,0 +1,5 @@
+sdf!@CMX!)H@!)camlda0sdj
+CREATE USER 'moodleuser'@'localhost' IDENTIFIED BY 'sdf!@CMX!)H@!)camlda0sdj';
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodleuser'@'localhost';
+
+h189hca89123ASD1asd
