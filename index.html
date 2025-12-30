@@ -1031,11 +1031,21 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <a href="https://www.ransomware.live" target="_blank"
-                                        class="block mt-4 text-[10px] text-right text-gray-600 hover:text-red-400 transition cursor-pointer border-t border-dashed border-white/5 pt-3">
-                                        <i class="fas fa-satellite-dish mr-1" aria-hidden="true"></i> Data provided by
-                                        Ransomware.live
-                                    </a>
+                                    <div class="bg-black/40 p-3 rounded border border-danger/20 mb-3 relative overflow-hidden group hover:border-danger/50 transition-colors">
+    <div class="flex gap-2 items-start">
+        <i class="fas fa-shield-alt text-danger text-xs mt-0.5" aria-hidden="true"></i>
+        <div class="space-y-1">
+            <p class="text-[10px] text-gray-300 leading-tight font-bold uppercase text-danger">
+                Legal Disclaimer & Data Source
+            </p>
+            <p class="text-[9px] text-gray-500 leading-relaxed font-mono text-justify">
+                This feed displays <strong class="text-gray-400">Open Source Intelligence (OSINT)</strong> aggregated automatically from <span class="text-primary">ransomware.live</span>.
+                <br><br>
+                CyberPOPE is <strong class="text-white">NOT involved</strong> in these attacks, has <strong class="text-white">NO connection</strong> with the victims, and does <strong class="text-white">NOT interact</strong> with compromised infrastructure. This data is publicly available and is presented here strictly for <strong class="text-white">awareness purposes</strong> to demonstrate the reality of reputational damage and exposure.
+            </p>
+        </div>
+    </div>
+</div>
                                 </div>
                             </div>
                         </div>
@@ -1531,79 +1541,51 @@
                 return response.json();
             })
             .then(data => {
-                // 1. SORT (Priority: EU > Ransom Amount > Date)
-                data.sort((a, b) => {
-                    // Check if country is in EU list
-                    const isEuA = euCountryCodes.includes(a.country);
-                    const isEuB = euCountryCodes.includes(b.country);
-                    
-                    // Priority 1: EU Countries First
-                    if (isEuA !== isEuB) return isEuB ? 1 : -1; 
+                // 1. FILTER: Strict European Countries Only
+                const euVictims = data.filter(victim => {
+                    // Check if country code is in our EU list
+                    // (Ensure 'GB' and 'UK' are in your euCountryCodes array defined above)
+                    return euCountryCodes.includes(victim.country);
+                });
 
-                    // Priority 2: Has Ransom Info (Cost)
+                // 2. SORT: Ransom Price Available > Date
+                euVictims.sort((a, b) => {
+                    // Check for ransom info existence
                     const hasRansomA = a.extrainfos && a.extrainfos.ransom ? 1 : 0;
                     const hasRansomB = b.extrainfos && b.extrainfos.ransom ? 1 : 0;
+
+                    // Priority 1: Has Ransom Price (Show these first)
                     if (hasRansomA !== hasRansomB) return hasRansomB - hasRansomA;
                     
-                    // Priority 3: Date (Newest first)
+                    // Priority 2: Date (Newest first)
                     const dateA = parseDate(a.attackdate || a.discovered);
                     const dateB = parseDate(b.attackdate || b.discovered);
                     return dateB - dateA; 
                 });
 
-                // STATS - 24 Hours
+                // STATS - Update counts based on the FULL data (Global context), 
+                // or change to 'euVictims' if you only want to show stats for EU.
+                // Keeping global stats usually looks more impressive/scary.
                 const now = new Date();
                 const twentyFourHoursAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
                 const recentVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > twentyFourHoursAgo);
                 if (stats48hCount) stats48hCount.innerText = recentVictims.length;
 
-                // STATS - 7 Days
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
                 const weeklyVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > sevenDaysAgo);
                 if (stats7dCount) stats7dCount.innerText = weeklyVictims.length;
 
-                // STATS - EU Regions Impacted (Last 30 Days)
-                const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
-                
-                // Filter for EU countries within 30 days
-                const recentEUVictims = data.filter(v => {
-                    const d = parseDate(v.attackdate || v.discovered);
-                    return d > thirtyDaysAgo && euCountryCodes.includes(v.country);
-                });
-
-                // Extract unique country codes and map to names
-                const uniqueEUCodes = new Set(recentEUVictims.map(v => v.country));
-                const affectedEUNames = Array.from(uniqueEUCodes)
-                    .map(code => regionNames[code] || code) // Use name if available, else code
-                    .sort();
-                
-                if (regionsContainer) {
-                    if (affectedEUNames.length > 0) {
-                        regionsContainer.innerHTML = affectedEUNames.join(', ');
-                        regionsContainer.classList.add("text-primary"); // Highlight color
-                    } else {
-                        regionsContainer.innerText = "None in last 30 days";
-                        regionsContainer.classList.remove("text-primary");
-                    }
-                }
-
                 // 3. RENDER FEED
-                const feedLimit = 30;
-                const recent = data.slice(0, feedLimit);
                 const fragment = document.createDocumentFragment();
 
-                recent.forEach(victim => {
+                // Process all EU victims found
+                euVictims.forEach(victim => {
                     const li = document.createElement('li');
                     const countryCode = victim.country || 'UNK';
                     const countryDisplay = regionNames[countryCode] || countryCode;
                     
-                    // Check strict EU membership for highlighting
-                    const isTarget = euCountryCodes.includes(countryCode);
-
-                    // STYLE: Highlight EU Countries, Dim Others
-                    li.className = isTarget 
-                        ? 'group relative bg-white/10 border-l-[3px] border-primary/50 p-3 rounded-r hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden'
-                        : 'group relative bg-white/5 border-l-[3px] border-white/5 p-3 rounded-r hover:border-white/20 transition-all duration-300 cursor-default overflow-hidden opacity-60 hover:opacity-100 grayscale hover:grayscale-0';
+                    // Style for EU victims (since we filtered, they are all EU)
+                    li.className = 'group relative bg-white/10 border-l-[3px] border-primary/50 p-3 rounded-r hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden';
 
                     const name = victim.victim.length > 35 ? victim.victim.substring(0, 33) + '..' : victim.victim;
                     const date = (victim.attackdate || victim.discovered || 'N/A').split(' ')[0];
@@ -1611,9 +1593,11 @@
 
                     let ransomBadge = '';
                     if (victim.extrainfos && victim.extrainfos.ransom) {
+                        // Format ransom if it looks like a number, otherwise just show string
+                        let ransomVal = victim.extrainfos.ransom;
                         ransomBadge = `<div class="absolute right-2 top-2 z-10">
                             <span class="flex items-center gap-1 text-[9px] font-bold text-darker bg-red-500 px-2 py-0.5 rounded shadow-[0_0_10px_rgba(239,68,68,0.6)] animate-pulse">
-                                <i class="fas fa-dollar-sign"></i> ${victim.extrainfos.ransom}
+                                <i class="fas fa-dollar-sign"></i> ${ransomVal}
                             </span>
                         </div>`;
                     }
@@ -1622,10 +1606,10 @@
                         ${ransomBadge}
                         <div class="grid grid-cols-[1fr_auto] gap-2 items-center mb-1.5">
                             <div class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full ${isTarget ? 'bg-primary shadow-[0_0_5px_rgba(255,193,7,0.8)]' : 'bg-gray-500'}"></div>
-                                <span class="${isTarget ? 'text-white font-bold' : 'text-gray-400'} text-xs font-mono tracking-tight transition-colors">${name}</span>
+                                <div class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(255,193,7,0.8)]"></div>
+                                <span class="text-white font-bold text-xs font-mono tracking-tight transition-colors">${name}</span>
                             </div>
-                            <span class="text-[9px] font-mono ${isTarget ? 'text-primary border-primary/30 bg-primary/10' : 'text-gray-600 border-white/5 bg-black/20'} border px-1.5 rounded" title="${countryCode}">${countryDisplay}</span>
+                            <span class="text-[9px] font-mono text-primary border-primary/30 bg-primary/10 border px-1.5 rounded" title="${countryCode}">${countryDisplay}</span>
                         </div>
                         <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono border-t border-white/5 pt-1.5 mt-1">
                             <span class="uppercase tracking-wider font-bold" style="color: ${groupColor}"><i class="fas fa-biohazard mr-1 opacity-70"></i>${victim.group}</span>
@@ -1634,10 +1618,23 @@
                     fragment.appendChild(li);
                 });
 
+                // 4. ADD DELIMITER (Before cloning)
+                if (euVictims.length > 0) {
+                    const delimiter = document.createElement('li');
+                    delimiter.className = "py-4 flex items-center gap-4 opacity-30";
+                    delimiter.innerHTML = `
+                        <div class="h-px bg-white/50 flex-grow"></div>
+                        <div class="text-[9px] font-mono text-white/50 whitespace-nowrap">--- REPLAYING FEED ---</div>
+                        <div class="h-px bg-white/50 flex-grow"></div>
+                    `;
+                    fragment.appendChild(delimiter);
+                }
+
                 feedList.innerHTML = '';
                 feedList.appendChild(fragment);
                 
-                // Clone for infinite scroll
+                // 5. CLONE FOR INFINITE SCROLL
+                // We clone the whole fragment we just built (including the delimiter)
                 Array.from(feedList.children).forEach(item => feedList.appendChild(item.cloneNode(true)));
             })
             .catch(error => {
