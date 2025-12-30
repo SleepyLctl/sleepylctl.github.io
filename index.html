@@ -10,7 +10,6 @@
 
         gtag('config', 'G-NSME0MC09W');
     </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petr Pospíšil | Cyber Security Architect & Fractional CISO | CyberPOPE</title>
@@ -994,7 +993,7 @@
                                             </div>
                                         </div>
                                         <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-1">
-                                            > AFFECTED_REGIONS (Total)</div>
+                                            > AFFECTED_EU_REGIONS (30d)</div>
                                         <div id="victims-48h-countries"
                                             class="text-xs text-primary font-mono leading-relaxed mb-3">Analyzing
                                             geo-data...</div>
@@ -1497,24 +1496,27 @@
                 return response.json();
             })
             .then(data => {
-                // 1. HIGHLIGHT LIST
-                const targetCountries = [
+                // 1. DEFINE EU COUNTRIES (Strict)
+                const euCountries = [
                     "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", 
                     "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", 
                     "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", 
-                    "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", 
-                    "United Kingdom", "UK", "Great Britain", "Switzerland", "Norway", "USA", "United States", "Canada"
+                    "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"
                 ];
 
-                // 2. SORT (Ransom $$$ First, then Date)
+                // 2. SORT (Priority: EU > Ransom Amount > Date)
                 data.sort((a, b) => {
+                    const isEuA = euCountries.includes(a.country);
+                    const isEuB = euCountries.includes(b.country);
+                    if (isEuA !== isEuB) return isEuB ? 1 : -1; // Prioritize EU
+
                     const hasRansomA = a.extrainfos && a.extrainfos.ransom ? 1 : 0;
                     const hasRansomB = b.extrainfos && b.extrainfos.ransom ? 1 : 0;
-                    if (hasRansomA !== hasRansomB) return hasRansomB - hasRansomA;
+                    if (hasRansomA !== hasRansomB) return hasRansomB - hasRansomA; // Secondary: Has Ransom Info
                     
                     const dateA = parseDate(a.attackdate || a.discovered);
                     const dateB = parseDate(b.attackdate || b.discovered);
-                    return dateB - dateA;
+                    return dateB - dateA; // Tertiary: Date (Newest first)
                 });
 
                 // STATS
@@ -1524,14 +1526,23 @@
                 if (stats48hCount) stats48hCount.innerText = recentVictims.length;
                 if (countContainer) countContainer.innerText = `[${data.length} RECORDS]`;
 
-                // 7 Days
+                // 7 Days Stats
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
                 const weeklyVictims = data.filter(victim => parseDate(victim.attackdate || victim.discovered) > sevenDaysAgo);
                 if (stats7dCount) stats7dCount.innerText = weeklyVictims.length;
 
-                // Regions
-                const uniqueCountries = new Set(data.map(v => v.country).filter(c => c && c.trim().length > 0));
-                if (regionsContainer) regionsContainer.innerText = `${uniqueCountries.size} Unique Regions`;
+                // EU Regions Impacted (Last 30 Days)
+                const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
+                const recentEUVictims = data.filter(v => parseDate(v.attackdate || v.discovered) > thirtyDaysAgo && euCountries.includes(v.country));
+                const affectedEU = new Set(recentEUVictims.map(v => v.country));
+                
+                if (regionsContainer) {
+                    if (affectedEU.size > 0) {
+                        regionsContainer.innerHTML = Array.from(affectedEU).sort().join(', ');
+                    } else {
+                        regionsContainer.innerText = "None in last 30 days";
+                    }
+                }
 
                 // 3. RENDER
                 const recent = data.slice(0, 30);
@@ -1540,9 +1551,9 @@
                 recent.forEach(victim => {
                     const li = document.createElement('li');
                     const countryName = victim.country || 'UNK';
-                    const isTarget = targetCountries.includes(countryName);
+                    const isTarget = euCountries.includes(countryName);
 
-                    // STYLE: Highlight Target Countries, Dim Others
+                    // STYLE: Highlight EU Countries, Dim Others
                     li.className = isTarget 
                         ? 'group relative bg-white/10 border-l-[3px] border-primary/50 p-3 rounded-r hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden'
                         : 'group relative bg-white/5 border-l-[3px] border-white/5 p-3 rounded-r hover:border-white/20 transition-all duration-300 cursor-default overflow-hidden opacity-60 hover:opacity-100 grayscale hover:grayscale-0';
