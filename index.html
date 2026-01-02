@@ -15,7 +15,7 @@
     <title>Petr Pospíšil | Cyber Security Architect & Fractional CISO | CyberPOPE</title>
     <meta name="title" content="Petr Pospíšil | Cyber Security Architect & Fractional CISO | CyberPOPE">
     <meta name="description"
-        content="Senior Cyber Security Architect and Fractional CISO based in Prague. Expert in defensive engineering, NIS2, ISO 27001, and strategic leadership. Defend your business against ransomware and regulatory fines.">
+        content="Senior Cyber Security Architect and Fractional CISO based in Prague. Expert in defensive engineering, NIS2, ISO 27001, and strategic leadership. Available for SMEs and Large Enterprise collaborations.">
     <meta name="keywords"
         content="Cyber Security Architect, Fractional CISO, CISSP, NIS2 Compliance, ISO 27001, Cyber Security Consultant, Penetration Testing, Prague, Petr Pospíšil, CyberPOPE, Blue Team, Red Team">
     <meta name="author" content="Petr Pospíšil">
@@ -238,16 +238,15 @@
             position: relative;
         }
 
-        /* UNIFIED GLASS PANEL STYLE */
+        /* UPDATED: Premium Glass Panel with Cut Glass Effect */
         .glass-panel {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            /* Subtle glow matching your primary color */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Increased opacity */
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.5),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05); /* Inner shadow for depth */
         }
 
         /* TECH FRAME - Sharpened for Engineering Look */
@@ -300,7 +299,7 @@
         }
 
         .dud {
-            color: #757575;
+            color: #94a3b8; /* Lighter grey for better contrast */
             opacity: 0.7;
         }
 
@@ -315,24 +314,10 @@
             box-shadow: 0 10px 40px -10px rgba(255, 193, 7, 0.15);
         }
 
-        .hover-card-red:hover {
-            border-color: rgba(239, 68, 68, 0.5) !important;
-            box-shadow: 0 10px 40px -10px rgba(239, 68, 68, 0.2) !important;
-        }
-
-        .hover-card-blue:hover {
-            border-color: rgba(59, 130, 246, 0.5) !important;
-            box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.2) !important;
-        }
-
-        .hover-card-green:hover {
-            border-color: rgba(34, 197, 94, 0.5) !important;
-            box-shadow: 0 10px 40px -10px rgba(34, 197, 94, 0.2) !important;
-        }
-
-        .hover-card-purple:hover {
-            border-color: rgba(168, 85, 247, 0.5) !important;
-            box-shadow: 0 10px 40px -10px rgba(168, 85, 247, 0.2) !important;
+        /* Standardized Card Hover - Gold/Primary */
+        .hover-card-standard:hover {
+             border-color: rgba(255, 193, 7, 0.5) !important;
+             box-shadow: 0 10px 40px -10px rgba(255, 193, 7, 0.2) !important;
         }
 
         .flow-line {
@@ -380,14 +365,20 @@
         class="fixed w-full top-0 z-50 border-b border-white/5 bg-darker/90 backdrop-blur-md transition-all duration-300 shadow-lg">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="group flex items-center gap-3">
-                <div class="leading-none font-display font-bold text-2xl text-white tracking-tighter">
-                    <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil <span
-                        class="text-white/30 mx-1">|</span> Cyber<span class="text-primary">POPE</span>
-                    <span
-                        class="block text-[10px] font-mono font-medium text-gray-400 tracking-wider uppercase mt-3 leading-tight">Independent
-                        Consultant | Cyber Security Architect & Fractional CISO | Expert On Demand</span>
-                </div>
-            </a>
+    <div class="leading-none font-display font-bold text-2xl text-white tracking-tighter">
+        <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil
+        
+        <span class="text-white/30 mx-2 text-lg font-light">:</span>
+
+        <span class="text-lg font-mono opacity-90 group-hover:opacity-100 transition">
+            <span class="text-white">Cyber</span><span class="text-primary">POPE</span>
+        </span>
+
+        <span class="block text-[10px] font-sans font-medium text-gray-400 tracking-wider uppercase mt-3 leading-tight">
+            Independent Consultant | Cyber Security Architect & Fractional CISO | Open for Collaboration
+        </span>
+    </div>
+</a>
 
             <nav class="hidden md:flex space-x-8 items-center font-mono text-xs tracking-wide">
                 <a href="/" class="block text-gray-300 hover:text-primary transition-colors">Home</a>
@@ -477,23 +468,21 @@
                                     Security Architect & Fractional CISO</span>
 
                                 <span
-                                    class="absolute top-full left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 mt-4 w-80 p-5 bg-surface/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 z-50 transform translate-y-[-10px] group-hover/tooltip:translate-y-0 block pointer-events-none group-hover/tooltip:pointer-events-auto">
+                                    class="absolute top-full left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 mt-4 w-96 p-5 bg-surface/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 z-50 transform translate-y-[-10px] group-hover/tooltip:translate-y-0 block pointer-events-none group-hover/tooltip:pointer-events-auto">
 
                                     <span
                                         class="block text-white font-bold text-xs mb-3 uppercase tracking-wider text-primary flex items-center gap-2">
-                                        <i class="fas fa-chess-queen"></i> The "One-Man Army" Advantage
+                                        <i class="fas fa-chess-queen"></i> The Strategic Advantage
                                     </span>
 
                                     <span class="block space-y-3">
                                         <span class="block text-xs text-gray-300 leading-relaxed font-sans font-normal">
-                                            <strong>CEO Briefing:</strong> Corporations spend millions on large security
-                                            teams. I provide similar capability adjusted to your SME as a single,
-                                            high-impact expert, on demand.
+                                            <strong>CEO Briefing:</strong> Corporations spend millions on large security teams. I provide that same high-level capability - whether you are an SME needing a complete security department or a Large Enterprise seeking specialized long-term architectural expertise.
                                         </span>
 
                                         <span
                                             class="block text-[10px] text-gray-400 font-mono pt-2 border-t border-white/10">
-                                            > I become the security team your IT dept needs.
+                                            > Open to all collaborations that drive mutual success.
                                         </span>
                                     </span>
 
@@ -970,39 +959,40 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="bg-white/5 rounded-sm border border-white/10 mt-auto">
-                                        <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-3">
+                                    
+                                    <div class="bg-white/5 rounded-sm border border-white/10 mt-auto p-8 relative">
+                                        <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-6">
                                             > INTELLIGENCE_REPORT</div>
-                                        <div class="grid grid-cols-2 gap-4 mb-4">
+                                        <div class="grid grid-cols-2 gap-8 mb-8">
                                             <div>
-                                                <div class="flex items-end gap-2">
+                                                <div class="flex items-end gap-2 mb-2">
                                                     <span id="victims-48h-count"
-                                                        class="text-3xl font-bold text-white leading-none font-mono">...</span>
+                                                        class="text-4xl font-bold text-white leading-none font-mono block">...</span>
                                                     <span
                                                         class="text-[10px] text-gray-400 mb-1 uppercase tracking-wide font-bold"> Last
                                                         24 Hours</span>
                                                 </div>
-                                                <div class="h-0.5 bg-red-500/50 w-full mt-1"></div>
+                                                <div class="h-0.5 bg-red-500/50 w-full"></div>
                                             </div>
                                             <div>
-                                                <div class="flex items-end gap-2">
+                                                <div class="flex items-end gap-2 mb-2">
                                                     <span id="victims-30d-count"
-                                                        class="text-3xl font-bold text-white leading-none font-mono">...</span>
+                                                        class="text-4xl font-bold text-white leading-none font-mono block">...</span>
                                                     <span
                                                         class="text-[10px] text-gray-400 mb-1 uppercase tracking-wide font-bold"> Last
                                                         7 Days</span>
                                                 </div>
-                                                <div class="h-0.5 bg-orange-500/50 w-full mt-1"></div>
+                                                <div class="h-0.5 bg-orange-500/50 w-full"></div>
                                             </div>
                                         </div>
-                                        <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-1">
+                                        <div class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-3">
                                             > AFFECTED_EU_REGIONS (30d)</div>
                                         <div id="victims-48h-countries"
-                                            class="text-xs text-primary font-mono leading-relaxed mb-3"> Analyzing
+                                            class="text-xs text-primary font-mono leading-relaxed mb-6 block break-words"> Analyzing
                                             geo-data...</div>
                                         
                                         <div
-                                            class="flex gap-2 items-start bg-black/30 p-2 rounded-sm border border-white/5">
+                                            class="flex gap-3 items-start bg-black/30 p-4 rounded-sm border border-white/5">
                                             <i class="fas fa-exclamation-triangle text-yellow-500 text-xs mt-0.5"
                                                 aria-hidden="true"></i>
                                             <p class="text-[10px] text-gray-400 italic leading-tight">
@@ -1014,45 +1004,54 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="border-l border-white/10 pl-0 lg:pl-8 flex flex-col h-full relative group/feed">
-                                    <div class="flex justify-between items-center mb-4 px-2">
-                                        <div class="text-[10px] text-gray-500 font-mono">> LATEST_EUROPEAN_VICTIMS.JSON</div>
-                                        <div id="victim-count" class="text-[10px] text-red-400 font-bold font-mono">...
-                                        </div>
+                                <div class="border-l border-white/10 pl-0 lg:pl-8 flex flex-col h-full relative group/feed">
+                                    
+                                    <div class="md:hidden text-center py-4">
+                                        <button onclick="document.getElementById('mobile-feed-container').classList.toggle('hidden')" 
+                                            class="text-xs font-bold text-primary uppercase border border-primary/30 bg-primary/10 px-4 py-2 rounded-sm">
+                                            Show Live Threat Feed (Tap to Expand)
+                                        </button>
                                     </div>
-                                    <div class="h-[450px] overflow-hidden relative font-mono text-sm">
-                                        <div
-                                            class="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-darker to-transparent z-10 pointer-events-none">
-                                        </div>
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-darker to-transparent z-10 pointer-events-none">
-                                        </div>
-                                        <div id="ransomware-container" class="animate-scroll-vertical">
-                                            <ul id="ransomware-feed" class="space-y-3 px-2">
-                                                <li class="text-gray-500 italic p-4 text-center">Connecting to threat
-                                                    intel feed...</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <a href="https://www.ransomware.live" target="_blank"
-                                        class="block mt-4 text-[10px] text-right text-gray-600 hover:text-red-400 transition cursor-pointer border-t border-dashed border-white/5 pt-3">
-                                        <i class="fas fa-satellite-dish mr-1" aria-hidden="true"></i> Data provided by
-                                        Ransomware.live
-                                    </a>
 
-                                    <div class="bg-black/40 p-3 rounded-sm border border-danger/20 mt-4 relative overflow-hidden group hover:border-danger/50 transition-colors">
-                                        <div class="flex gap-2 items-start">
-                                            <i class="fas fa-shield-alt text-danger text-xs mt-0.5" aria-hidden="true"></i>
-                                            <div class="space-y-1">
-                                                <p class="text-[10px] text-gray-300 leading-tight font-bold uppercase text-danger">
-                                                    Legal Disclaimer & Data Source
-                                                </p>
-                                                <p class="text-[9px] text-gray-500 leading-relaxed font-mono text-justify">
-                                                    This feed displays <strong class="text-gray-400">Open Source Intelligence (OSINT)</strong> aggregated automatically from <span class="text-primary">ransomware.live</span>.
-                                                    <br><br>
-                                                    CyberPOPE is <strong class="text-white">NOT involved</strong> in these attacks, has <strong class="text-white">NO connection</strong> with the victims, and does <strong class="text-white">NOT interact</strong> with compromised infrastructure. This data is publicly available and is presented here strictly for <strong class="text-white">awareness purposes</strong> to demonstrate the reality of reputational damage and exposure.
-                                                </p>
+                                    <div id="mobile-feed-container" class="hidden md:block">
+                                        <div class="flex justify-between items-center mb-4 px-2">
+                                            <div class="text-[10px] text-gray-500 font-mono">> LATEST_EUROPEAN_VICTIMS.JSON</div>
+                                            <div id="victim-count" class="text-[10px] text-red-400 font-bold font-mono">...
+                                            </div>
+                                        </div>
+                                        <div class="h-[500px] overflow-hidden relative font-mono text-sm">
+                                            <div
+                                                class="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-darker to-transparent z-10 pointer-events-none">
+                                            </div>
+                                            <div
+                                                class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-darker to-transparent z-10 pointer-events-none">
+                                            </div>
+                                            <div id="ransomware-container" class="animate-scroll-vertical">
+                                                <ul id="ransomware-feed" class="space-y-3 px-2">
+                                                    <li class="text-gray-500 italic p-4 text-center">Connecting to threat
+                                                        intel feed...</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <a href="https://www.ransomware.live" target="_blank"
+                                            class="block mt-4 text-[10px] text-right text-gray-600 hover:text-red-400 transition cursor-pointer border-t border-dashed border-white/5 pt-3">
+                                            <i class="fas fa-satellite-dish mr-1" aria-hidden="true"></i> Data provided by
+                                            Ransomware.live
+                                        </a>
+
+                                        <div class="bg-black/40 p-4 rounded-sm border border-danger/20 mt-4 relative overflow-hidden group hover:border-danger/50 transition-colors">
+                                            <div class="flex gap-2 items-start">
+                                                <i class="fas fa-shield-alt text-danger text-xs mt-0.5" aria-hidden="true"></i>
+                                                <div class="space-y-1">
+                                                    <p class="text-[10px] text-gray-300 leading-tight font-bold uppercase text-danger">
+                                                        Legal Disclaimer & Data Source
+                                                    </p>
+                                                    <p class="text-[9px] text-gray-500 leading-relaxed font-mono text-justify">
+                                                        This feed displays <strong class="text-gray-400">Open Source Intelligence (OSINT)</strong> aggregated automatically from <span class="text-primary">ransomware.live</span>.
+                                                        <br><br>
+                                                        CyberPOPE is <strong class="text-white">NOT involved</strong> in these attacks, has <strong class="text-white">NO connection</strong> with the victims, and does <strong class="text-white">NOT interact</strong> with compromised infrastructure. This data is publicly available and is presented here strictly for <strong class="text-white">awareness purposes</strong> to demonstrate the reality of reputational damage and exposure.
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1171,8 +1170,9 @@
                         ./deploy_value --business_outcome</span>
                     <h2 class="text-4xl font-bold text-white mt-2 mb-4 tracking-tight">Replace Uncertainty with Control
                     </h2>
-                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">I offer two distinct modes of engagement: ongoing
-                        strategic leadership or specialized technical interventions.</p>
+                     <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                        I offer two flexible engagement models: <strong class="text-white">Long-Term Strategic Partnership</strong> or <strong class="text-white">Targeted Project Execution</strong>.
+                    </p>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full mt-4"></div>
                 </div>
 
@@ -1233,81 +1233,81 @@
                     <div class="flex items-center gap-4 mb-8">
                         <div class="h-px flex-1 bg-white/10"></div>
                         <h3 class="text-xl font-bold text-white font-mono uppercase tracking-widest"><span
-                                class="text-blue-500">02 //</span> Technical Architecture & Projects</h3>
+                                class="text-primary">02 //</span> Technical Architecture & Projects</h3>
                         <div class="h-px flex-1 bg-white/10"></div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
                         <div
-                            class="p-8 rounded-sm glass-panel hover-card-red hover-card-effect border-l-4 border-red-500 group transition duration-300 flex flex-col">
+                            class="p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col">
                             <div
-                                class="text-4xl text-red-500 mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-red-500/10 rounded-sm">
+                                class="text-4xl text-primary mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-primary/10 rounded-sm">
                                 <i class="fas fa-bug" aria-hidden="true"></i>
                             </div>
                             <h3 class="text-lg font-bold text-white mb-2 font-display">Vulnerability & PenTesting</h3>
-                            <div class="text-[10px] text-red-400 uppercase font-bold tracking-wide mb-4 font-mono">
+                            <div class="text-[10px] text-primary uppercase font-bold tracking-wide mb-4 font-mono">
                                 Project-Based /
                                 Audit</div>
                             <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">Identify and fix
                                 vulnerabilities before they are exploited. I conduct rigorous technical audits and
                                 penetration tests to validate your defenses.</div>
                             <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
-                                <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Web & App
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Web & App
                                     Penetration Testing</li>
-                                <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Infrastructure
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Infrastructure
                                     Audits</li>
-                                <li class="flex gap-2 items-center"><span class="text-red-500">✓</span> Cloud
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Cloud
                                     Configuration Review</li>
                             </ul>
                         </div>
                         <div
-                            class="p-8 rounded-sm glass-panel hover-card-green hover-card-effect border-l-4 border-green-500 group transition duration-300 flex flex-col">
+                            class="p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col">
                             <div
-                                class="text-4xl text-green-500 mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-green-500/10 rounded-sm">
+                                class="text-4xl text-primary mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-primary/10 rounded-sm">
                                 <i class="fas fa-code-branch" aria-hidden="true"></i>
                             </div>
                             <h3 class="text-lg font-bold text-white mb-2 font-display">Secure Development (S-SDLC)</h3>
-                            <div class="text-[10px] text-green-400 uppercase font-bold tracking-wide mb-4 font-mono">
+                            <div class="text-[10px] text-primary uppercase font-bold tracking-wide mb-4 font-mono">
                                 Architecture
                                 & Implementation</div>
                             <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">Build security into your
                                 product DNA. I help engineering teams implement DevSecOps pipelines and secure coding
                                 standards ("Shift Left").</div>
                             <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
-                                <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> DevSecOps
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> DevSecOps
                                     Pipeline Setup</li>
-                                <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> Threat
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Threat
                                     Modeling</li>
-                                <li class="flex gap-2 items-center"><span class="text-green-500">✓</span> Architecture
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Architecture
                                     Review</li>
                             </ul>
                         </div>
                         <div
-                            class="p-8 rounded-sm glass-panel hover-card-blue hover-card-effect border-l-4 border-blue-500 group transition duration-300 flex flex-col">
+                            class="p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col">
                             <div
-                                class="text-4xl text-blue-500 mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-blue-500/10 rounded-sm">
+                                class="text-4xl text-primary mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-primary/10 rounded-sm">
                                 <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
                             </div>
                             <h3 class="text-lg font-bold text-white mb-2 font-display">Training & Awareness</h3>
-                            <div class="text-[10px] text-blue-400 uppercase font-bold tracking-wide mb-4 font-mono">
+                            <div class="text-[10px] text-primary uppercase font-bold tracking-wide mb-4 font-mono">
                                 Workshops &
                                 Education</div>
                             <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">Eliminate the "Human
                                 Error" factor. I design and deliver custom security training programs for developers,
                                 regular staff, and management.</div>
                             <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
-                                <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Tabletop
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Tabletop
                                     Exercises</li>
-                                <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Phishing
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Phishing
                                     Simulations</li>
-                                <li class="flex gap-2 items-center"><span class="text-blue-500">✓</span> Secure Coding
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Secure Coding
                                     Workshops</li>
                             </ul>
                         </div>
                         <div
-                            class="p-8 rounded-sm glass-panel hover-card-purple hover-card-effect border-l-4 border-purple-500 group transition duration-300 flex flex-col">
+                            class="p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col">
                             <div
-                                class="text-4xl text-purple-500 mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-purple-500/10 rounded-sm">
+                                class="text-4xl text-primary mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-primary/10 rounded-sm">
                                 <i class="fas fa-user-secret" aria-hidden="true"></i>
                             </div>
                             <h3
@@ -1315,11 +1315,11 @@
                                 Personal
                                 <div class="relative group/tooltip cursor-help">
                                     <span
-                                        class="border-b border-dashed border-purple-500/50 hover:border-purple-500 transition">OSINT</span>
+                                        class="border-b border-dashed border-primary/50 hover:border-primary transition">OSINT</span>
                                     <div
                                         class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 p-4 bg-surface/95 backdrop-blur-md border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 z-50 text-left pointer-events-none">
                                         <div
-                                            class="text-white font-bold text-xs mb-1 uppercase tracking-wider text-purple-400">
+                                            class="text-white font-bold text-xs mb-1 uppercase tracking-wider text-primary">
                                             Plain English:</div>
                                         <p class="text-xs text-gray-300 leading-relaxed font-sans font-normal">
                                             Open Source Intelligence. It means searching the public internet to find
@@ -1333,7 +1333,7 @@
                                 </div>
                                 & Privacy
                             </h3>
-                            <div class="text-[10px] text-purple-400 uppercase font-bold tracking-wide mb-4 font-mono">
+                            <div class="text-[10px] text-primary uppercase font-bold tracking-wide mb-4 font-mono">
                                 Digital Footprint / VIP Protection</div>
                             <div class="text-gray-400 text-xs leading-relaxed mb-4 flex-grow">
                                 For managers and individuals in sensitive situations. I research what is stored about
@@ -1342,11 +1342,11 @@
                                 actionable recommendations for removal and privacy hardening.
                             </div>
                             <ul class="space-y-2 text-xs text-gray-500 font-mono pt-4 border-t border-white/5 mt-auto">
-                                <li class="flex gap-2 items-center"><span class="text-purple-500">✓</span> Deep Web &
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Deep Web &
                                     Social Media Audit</li>
-                                <li class="flex gap-2 items-center"><span class="text-purple-500">✓</span> PII & Data
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> PII & Data
                                     Leak Search</li>
-                                <li class="flex gap-2 items-center"><span class="text-purple-500">✓</span> Removal &
+                                <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Removal &
                                     Cleanup Guidance</li>
                             </ul>
                         </div>
@@ -1613,7 +1613,7 @@
                     
                     // Style for EU victims (since we filtered, they are all EU)
                     // UPDATE: rounded -> rounded-sm
-                    li.className = 'group relative bg-white/10 border-l-[3px] border-primary/50 p-3 rounded-r-sm hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden';
+                    li.className = 'group relative bg-white/10 border-l-[3px] border-primary/50 p-4 rounded-r-sm hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden';
 
                     const name = victim.victim.length > 35 ? victim.victim.substring(0, 33) + '..' : victim.victim;
                     const date = (victim.attackdate || victim.discovered || 'N/A').split(' ')[0];
