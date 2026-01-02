@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awareness & Human Risk | CyberPOPE</title>
+    <title>Security Awareness & Human Risk | CyberPOPE</title>
 
     <meta name="description"
         content="Comprehensive Security Awareness Training and Human Risk Management. NIS2 compliance, phishing simulations, and executive deepfake defense. Turn your employees into your strongest firewall.">
@@ -49,54 +49,6 @@
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Security Awareness Training",
-      "provider": {
-        "@type": "ProfessionalService",
-        "name": "CyberPOPE",
-        "image": "https://cyberpope.eu/assets/images/logo.png",
-        "priceRange": "$$$"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Czech Republic"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Awareness Tiers",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Foundation: Compliance Core",
-              "description": "Full Academy Access, NIS2/ISO Compliance content, Policy Templates."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Standard: Active Defense",
-              "description": "Quarterly Phishing Simulations, Live Sessions, Monthly Themes."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Expert: Red Team Mindset",
-              "description": "Onsite Consultation, Physical Breach Sims, CEO Deepfake Defense."
-            }
-          }
-        ]
-      }
-    }
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -110,7 +62,6 @@
                         darker: '#020617',
                         surface: '#1e293b',
                         danger: '#ef4444',
-                        royal: '#a855f7', // Purple for Expert Tier
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -121,7 +72,6 @@
                         'float': 'float 8s ease-in-out infinite',
                         'float-delayed': 'float 8s ease-in-out 4s infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'scroll-vertical': 'scroll-vertical 40s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -148,20 +98,24 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* UNIFIED GLASS PANEL STYLE */
+        section {
+            scroll-margin-top: 100px;
+            position: relative;
+        }
+
+        /* UPDATED: Premium Glass Panel with Cut Glass Effect */
         .glass-panel {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.5),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
         }
 
         /* UPDATED: Sharper Terminal Window */
         .terminal-window {
-            /* Changed from rounded-lg to rounded-none */
             @apply glass-panel rounded-none overflow-hidden transition-all duration-300;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
@@ -197,10 +151,10 @@
             box-shadow: 0 10px 40px -10px rgba(255, 193, 7, 0.15);
         }
 
+        /* Standardized Gold Hover for all tiers */
         .expert-card:hover {
-            border-color: rgba(168, 85, 247, 0.6) !important;
-            /* Purple Glow */
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2) !important;
+            border-color: rgba(255, 193, 7, 0.8) !important;
+            box-shadow: 0 0 40px rgba(255, 193, 7, 0.25) !important;
         }
 
         ::-webkit-scrollbar {
@@ -230,17 +184,21 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="group flex items-center gap-3">
                 <div class="leading-none font-display font-bold text-2xl text-white tracking-tighter">
-                    <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil <span
-                        class="text-white/30 mx-1">|</span> Cyber<span class="text-primary">POPE</span>
+                   <span class="text-primary">Pe</span>tr <span class="text-primary">Po</span>spíšil 
+                   <span class="text-white/30 mx-2 text-lg font-light">|</span> 
+                   <span class="text-lg font-mono opacity-90 group-hover:opacity-100 transition">
+                        <span class="text-white">Cyber</span><span class="text-primary">POPE</span>
+                   </span>
+
                     <span
-                        class="block text-[10px] font-mono font-medium text-gray-400 tracking-wider uppercase mt-3 leading-tight">Independent
-                        Consultant | Cyber Security Architect & Fractional CISO | Expert On Demand</span>
+                        class="block text-[10px] font-sans font-medium text-gray-400 tracking-wider uppercase mt-3 leading-tight">Independent
+                        Consultant | Cyber Security Architect & Fractional CISO | Open for Collaboration</span>
                 </div>
             </a>
 
             <nav class="hidden md:flex space-x-8 items-center font-mono text-xs tracking-wide">
                 <a href="/" class="block text-gray-300 hover:text-primary transition-colors">Home</a>
-                <a href="index.html#solution" class="block text-primary font-bold transition-colors">Services</a>
+                <a href="index.html#solution" class="block text-gray-300 hover:text-primary transition-colors">Services</a>
 
                 <div class="cursor-help py-2 transition-all duration-300 opacity-30 hover:opacity-100 hover:scale-125"
                     title="Слава Україні!">
@@ -263,8 +221,8 @@
         <div id="mobile-menu"
             class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl font-mono text-sm">
             <div class="flex flex-col p-6 space-y-4">
-                <a href="/" class="block text-gray-300 hover:text-primary">> Home</a>
-                <a href="index.html#solution" class="block text-primary font-bold">> Services</a>
+                <a href="/" class="block text-gray-300 hover:text-primary font-bold uppercase">> Home</a>
+                <a href="index.html#solution" class="block text-gray-300 hover:text-primary font-bold uppercase">> Services</a>
                 <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink"
                     class="block bg-primary text-darker text-center py-3 rounded-none font-bold mt-4 uppercase">> Schedule
                     Call</a>
@@ -383,7 +341,7 @@
                         <div class="space-y-4">
                             <div class="flex gap-4">
                                 <div
-                                    class="w-10 h-10 rounded-sm bg-blue-900/30 flex items-center justify-center text-secondary shrink-0 border border-blue-500/20">
+                                    class="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
                                     <i class="fas fa-laptop-code"></i>
                                 </div>
                                 <div>
@@ -397,8 +355,8 @@
                             </div>
 
                             <div class="flex gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-sm bg-purple-900/30 flex items-center justify-center text-purple-400 shrink-0 border border-purple-500/20">
+                                 <div
+                                    class="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
                                     <i class="fas fa-gamepad"></i>
                                 </div>
                                 <div>
@@ -498,58 +456,58 @@
                             </li>
                         </ul>
 
-                        <div class="bg-blue-900/20 p-4 rounded-sm border border-blue-500/30 text-center mt-auto font-mono">
-                            <div class="text-xs text-blue-400 uppercase font-bold mb-1">Consultation Upgrade</div>
+                        <div class="bg-primary/10 p-4 rounded-sm border border-primary/30 text-center mt-auto font-mono">
+                            <div class="text-xs text-primary uppercase font-bold mb-1">Consultation Upgrade</div>
                             <div class="text-white text-lg">10 Hours / Year</div>
                             <div class="text-[10px] text-gray-400">Ad-hoc advice (~1hr/mo)</div>
                         </div>
                     </div>
 
                     <div
-                        class="flex flex-col h-full rounded-md glass-panel border border-royal/50 expert-card transition-all duration-300 p-6 lg:p-8 relative overflow-hidden">
+                        class="flex flex-col h-full rounded-md glass-panel border border-primary/50 expert-card transition-all duration-300 p-6 lg:p-8 relative overflow-hidden">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-royal/10 blur-[50px] rounded-full pointer-events-none">
+                            class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[50px] rounded-full pointer-events-none">
                         </div>
 
-                        <div class="mb-6 border-b border-royal/30 pb-6 relative z-10">
-                            <div class="text-royal font-mono text-xs mb-2">03_EXPERT</div>
-                            <h3 class="text-xl font-bold text-royal font-display">Red Team Mindset</h3>
+                        <div class="mb-6 border-b border-primary/30 pb-6 relative z-10">
+                            <div class="text-primary font-mono text-xs mb-2">03_EXPERT</div>
+                            <h3 class="text-xl font-bold text-primary font-display">Red Team Mindset</h3>
                             <p class="text-gray-400 text-xs mt-3">I step out of the screen and into your office.
                                 Real-world physical & digital adversary simulation.</p>
                         </div>
 
-                        <div class="text-xs font-bold text-royal mb-4 flex items-center gap-2 relative z-10 font-mono">
+                        <div class="text-xs font-bold text-primary mb-4 flex items-center gap-2 relative z-10 font-mono">
                             <i class="fas fa-plus-circle"></i> Everything in Active Defense, plus:
                         </div>
 
                         <ul class="space-y-4 mb-8 flex-grow relative z-10 font-mono">
                             <li
-                                class="flex items-start gap-3 text-sm text-white bg-royal/10 p-2 rounded-sm border border-royal/20 -mx-2">
-                                <i class="fas fa-robot text-royal mt-1"></i>
-                                <span><strong class="text-royal">HOT:</strong> AI Impersonation Defense (CEO
+                                class="flex items-start gap-3 text-sm text-white bg-primary/10 p-2 rounded-sm border border-primary/20 -mx-2">
+                                <i class="fas fa-robot text-primary mt-1"></i>
+                                <span><strong class="text-primary">HOT:</strong> AI Impersonation Defense (CEO
                                     Deepfakes)</span>
                             </li>
                             <li class="flex items-start gap-3 text-sm text-white">
-                                <i class="fas fa-map-marker-alt text-royal mt-1"></i>
+                                <i class="fas fa-map-marker-alt text-primary mt-1"></i>
                                 <span><strong>Upgrade:</strong> Onsite Security Consultation</span>
                             </li>
                             <li class="flex items-start gap-3 text-sm text-white">
-                                <i class="fas fa-tshirt text-royal mt-1"></i>
+                                <i class="fas fa-tshirt text-primary mt-1"></i>
                                 <span><strong>Add:</strong> Custom Branded Merch</span>
                             </li>
                             <li class="flex items-start gap-3 text-sm text-white">
-                                <i class="fas fa-user-secret text-royal mt-1"></i>
+                                <i class="fas fa-user-secret text-primary mt-1"></i>
                                 <span><strong>Add:</strong> Physical Breach Simulation (USB/Tailgating)</span>
                             </li>
                             <li class="flex items-start gap-3 text-sm text-white">
-                                <i class="fas fa-search text-royal mt-1"></i>
+                                <i class="fas fa-search text-primary mt-1"></i>
                                 <span><strong>Add:</strong> Clean Desk & Visual Hacking Audit</span>
                             </li>
                         </ul>
 
                         <div
-                            class="bg-royal/10 p-4 rounded-sm border border-royal/30 text-center relative z-10 mt-auto font-mono">
-                            <div class="text-xs text-royal uppercase font-bold mb-1">Fractional CISO Retainer</div>
+                            class="bg-primary/10 p-4 rounded-sm border border-primary/30 text-center relative z-10 mt-auto font-mono">
+                            <div class="text-xs text-primary uppercase font-bold mb-1">Fractional CISO Retainer</div>
                             <div class="text-white text-lg">24 Hours / Year</div>
                             <div class="text-[10px] text-gray-400">Available for General Onsite Consulting</div>
                         </div>
