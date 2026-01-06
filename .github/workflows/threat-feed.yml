@@ -1,0 +1,26 @@
+
+name: Update Ransomware Feed
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Runs every 6 hours
+  workflow_dispatch: # Allows you to run it manually from the Actions tab for testing
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Fetch Threat Data
+        run: curl -s "https://api.ransomware.live/v2/recentvictims" -o victims.json
+
+      - name: Commit and Push Data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update threat intelligence [skip ci]"
+          file_pattern: 'victims.json'
