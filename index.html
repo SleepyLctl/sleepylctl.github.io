@@ -389,7 +389,7 @@
 
                 <div class="relative group">
                     <button
-                        class="flex items-center gap-1 text-gray-300 group-hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-sm py-4">
+                        class="flex items-center gap-1 text-gray-300 group-hover:text-primary transition-colors focus:outline-none py-4">
                         Services <i class="fas fa-chevron-down text-[10px] pt-0.5"></i>
                     </button>
 
@@ -402,9 +402,8 @@
                             <a href="assessments.html"
                                 class="block px-5 py-4 hover:bg-white/5 border-b border-white/5 group/item">
                                 <div class="text-white font-bold mb-1 group-hover/item:text-primary transition">
-                                    Offensive Security & Technical Audits</div>
-                                <div class="text-[10px] text-gray-400 leading-tight">Vulnerability Management & Red
-                                    Teaming
+                                    Technical Audits & PenTesting</div>
+                                <div class="text-[10px] text-gray-400 leading-tight">Offensive Security & Red Teaming
                                 </div>
                             </a>
                             <a href="awareness.html" class="block px-5 py-4 hover:bg-white/5 group/item">
@@ -430,14 +429,13 @@
                 </a>
             </nav>
 
-            <button id="mobile-menu-btn"
-                class="md:hidden text-2xl text-white hover:text-primary transition p-2 focus:outline-none focus:ring-2 focus:ring-primary rounded-sm">
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white hover:text-primary transition p-2">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
         <div id="mobile-menu"
-            class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl font-mono text-sm z-50">
+            class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full shadow-2xl font-mono text-sm">
             <div class="flex flex-col p-6 space-y-4">
                 <a href="index.html"
                     class="block text-gray-300 hover:text-primary font-bold uppercase border-b border-white/5 pb-2">>
@@ -446,7 +444,7 @@
                     <div class="text-gray-500 text-xs mb-2 uppercase font-bold tracking-wider">Services</div>
                     <a href="assessments.html"
                         class="block text-white pl-4 py-2 hover:text-primary transition flex items-center gap-2">
-                        <i class="fas fa-bug text-xs text-primary/50"></i> Offensive Security & Technical Audits
+                        <i class="fas fa-bug text-xs text-primary/50"></i> Technical Audits & PenTesting
                     </a>
                     <a href="awareness.html"
                         class="block text-white pl-4 py-2 hover:text-primary transition flex items-center gap-2">
@@ -754,7 +752,7 @@
                                     <img src="img/ministry_of_foreign_affairs-cz.png" loading="lazy" alt="MFA CZ"
                                         class="h-full w-auto max-w-full object-contain">
                                 </div>
-                                <a href="mailto:petr.pospisil@cyberpope.eu"
+                                <a href="#contact"
                                     class="bg-white/5 p-4 rounded-sm border border-dashed border-white/10 hover:border-primary/50 hover:bg-white/10 transition duration-300 flex flex-col items-center justify-center h-full min-h-[6rem] group cursor-pointer text-center">
                                     <div class="text-white/20 group-hover:text-primary transition text-2xl mb-2"><i
                                             class="fas fa-handshake-simple" aria-hidden="true"></i></div>
@@ -1065,7 +1063,7 @@
                                     <div class="md:hidden text-center py-4">
                                         <button
                                             onclick="document.getElementById('mobile-feed-container').classList.toggle('hidden')"
-                                            class="text-xs font-bold text-primary uppercase border border-primary/30 bg-primary/10 px-4 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                            class="text-xs font-bold text-primary uppercase border border-primary/30 bg-primary/10 px-4 py-2 rounded-sm">
                                             Show Live Threat Feed (Tap to Expand)
                                         </button>
                                     </div>
@@ -1135,22 +1133,213 @@
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
-                        <a href="assessments.html"
-                            class="relative p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col block overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
-                                <i
-                                    class="fas fa-arrow-right text-primary -rotate-45 text-xl group-hover:rotate-0 transition-transform duration-300"></i>
+                        <div
+                            class="p-8 rounded-md bg-gradient-to-br from-surface to-darker border border-white/5 hover:border-red-500/50 transition-all duration-300 group shadow-lg flex flex-col h-full">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-sm bg-red-900/20 flex items-center justify-center border border-red-500/20 shrink-0">
+                                    <i class="fas fa-gavel text-red-500 text-3xl group-hover:scale-110 transition duration-300"
+                                        aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white font-display leading-none">Regulatory
+                                        Hammers</h3>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span
+                                            class="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-widest">NIS2
+                                            | DORA | CRA | ISO 27001</span>
+                                    </div>
+                                </div>
                             </div>
 
+                            <div class="text-left w-full space-y-4 text-sm text-gray-400 flex-grow">
+                                <p class="leading-relaxed text-xs mb-2">
+                                    Compliance is not just a checkbox; it's a culture. Navigating the alphabet soup of
+                                    regulations requires
+                                    more than just templates - it requires strategic alignment with your business goals.
+                                </p>
+
+                                <ul class="space-y-3">
+                                    <li class="pl-3 border-l-2 border-red-500/30">
+                                        <strong class="text-white block text-xs uppercase tracking-wide mb-0.5">Gap
+                                            Analysis & Readiness</strong>
+                                        Identify where you stand against NIS2, DORA, or ISO 27001 requirements and get a
+                                        roadmap to compliance.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="p-8 rounded-md bg-gradient-to-br from-surface to-darker border border-white/5 hover:border-red-500/50 transition-all duration-300 group shadow-lg flex flex-col h-full">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-sm bg-red-900/20 flex items-center justify-center border border-red-500/20 shrink-0">
+                                    <i class="fas fa-users-slash text-red-500 text-3xl group-hover:animate-pulse"
+                                        aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white font-display leading-none">The Skills Vacuum
+                                    </h3>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span class="relative flex h-2 w-2">
+                                            <span
+                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                        </span>
+                                        <span
+                                            class="text-[10px] font-mono font-bold text-red-400 uppercase tracking-widest">Critical
+                                            Knowledge</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-left w-full space-y-4 text-sm text-gray-400 flex-grow">
+                                <p class="leading-relaxed text-xs mb-2">
+                                    One-off training works for specialized deep-dives, but awareness fails without
+                                    continuity. People forget. A yearly video cannot stop modern hackers. Real defense
+                                    requires <span class="text-white">continuous knowledge sharing</span> - small,
+                                    digestible doses that build long-term habits.
+                                </p>
+
+                                <ul class="space-y-3">
+                                    <li class="pl-3 border-l-2 border-red-500/30">
+                                        <strong
+                                            class="text-white block text-xs uppercase tracking-wide mb-0.5">Management</strong>
+                                        Executive Strategy Briefing. A high-impact, single-session training on business
+                                        threats, compliance requirements (NIS2), and process optimization (ISMS),
+                                        respecting executive time.
+                                    </li>
+                                    <li class="pl-3 border-l-2 border-red-500/30">
+                                        <strong class="text-white block text-xs uppercase tracking-wide mb-0.5">IT
+                                            Specialists</strong>
+                                        Technical Deep-Dives. Hands-on defensive engineering workshops tailored
+                                        specifically to their technology stack and daily tasks.
+                                    </li>
+                                    <li class="pl-3 border-l-2 border-red-500/30">
+                                        <strong class="text-white block text-xs uppercase tracking-wide mb-0.5">Basic
+                                            Users</strong>
+                                        Continuous Awareness Program. A year-round cycle with rotating monthly topics,
+                                        daily visibility (flyers), and the CyberPOPE Academy platform to build culture,
+                                        not just compliance.
+                                    </li>
+                                </ul>
+
+                                <div class="pt-4 border-t border-white/10 flex flex-col gap-2 mt-auto">
+                                    <div class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-1">
+                                        Choose your solution:</div>
+
+                                    <a href="#showcase"
+                                        class="flex items-center justify-between group/link w-full bg-white/5 hover:bg-white/10 p-2 rounded-sm border border-white/5 transition-colors">
+                                        <span
+                                            class="text-xs font-bold text-gray-300 group-hover/link:text-primary transition-colors">Technical
+                                            Workshops</span>
+                                        <i
+                                            class="fas fa-arrow-right text-[10px] text-gray-500 group-hover/link:text-primary"></i>
+                                    </a>
+
+                                    <a href="awareness.html"
+                                        class="flex items-center justify-between group/link w-full bg-white/5 hover:bg-white/10 p-2 rounded-sm border border-white/5 transition-colors">
+                                        <span
+                                            class="text-xs font-bold text-gray-300 group-hover/link:text-primary transition-colors">Awareness
+                                            Program</span>
+                                        <i
+                                            class="fas fa-graduation-cap text-[10px] text-gray-500 group-hover/link:text-primary"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-24 relative">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] -z-10">
+            </div>
+
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-primary text-xs font-bold tracking-wider uppercase font-mono opacity-70">>
+                        ./deploy_value --business_outcome</span>
+                    <h2 class="text-4xl font-bold text-white mt-2 mb-4 tracking-tight">Replace Uncertainty with Control
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                        I offer two flexible engagement models: <strong class="text-white">Long-Term Strategic
+                            Partnership</strong> or <strong class="text-white">Targeted Project Execution</strong>.
+                    </p>
+                    <div class="h-1 w-20 bg-primary mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="mb-16">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-px flex-1 bg-white/10"></div>
+                        <h3 class="text-xl font-bold text-white font-mono uppercase tracking-widest"><span
+                                class="text-primary">01 //</span> Strategic Leadership</h3>
+                        <div class="h-px flex-1 bg-white/10"></div>
+                    </div>
+                    <div class="max-w-4xl mx-auto">
+                        <div
+                            class="p-10 rounded-md glass-panel hover-card-effect border-l-4 border-primary group hover:border-primary transition duration-300 relative overflow-hidden">
+                            <div
+                                class="absolute right-0 top-0 p-10 opacity-5 text-9xl text-primary pointer-events-none">
+                                <i class="fas fa-chess-king" aria-hidden="true"></i>
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-8 items-start">
+                                <div class="shrink-0">
+                                    <div
+                                        class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-4xl text-primary group-hover:scale-110 transition duration-300 border border-primary/20">
+                                        <i class="fas fa-chess-king" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="text-2xl font-bold text-white mb-3 font-display">Cyber Security Architect
+                                        &
+                                        Fractional CISO</h3>
+                                    <div
+                                        class="inline-block px-3 py-1 rounded-sm bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-4 uppercase tracking-wider font-mono">
+                                        Long-Term Engagement</div>
+                                    <p class="text-gray-300 text-base leading-relaxed mb-6">I serve as your long-term
+                                        security partner, handling both high-level strategy and deep technical
+                                        engineering. I manage your compliance roadmap (NIS2, ISO 27001) and budget,
+                                        while simultaneously designing secure architecture, selecting defensive tools,
+                                        and leading technical security testing.</p>
+                                    <div class="grid sm:grid-cols-2 gap-4 border-t border-white/5 pt-4">
+                                        <ul class="space-y-2 text-sm text-gray-400 font-mono">
+                                            <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
+                                                Regulatory Compliance (NIS2, CRA)</li>
+                                            <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
+                                                Architecture Design & Hardening</li>
+                                        </ul>
+                                        <ul class="space-y-2 text-sm text-gray-400 font-mono">
+                                            <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
+                                                Security Roadmap & Budgeting</li>
+                                            <li class="flex gap-2 items-center"><span class="text-primary">✓</span>
+                                                Tech Stack Selection & Testing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-px flex-1 bg-white/10"></div>
+                        <h3 class="text-xl font-bold text-white font-mono uppercase tracking-widest"><span
+                                class="text-primary">02 //</span> Technical Architecture & Projects</h3>
+                        <div class="h-px flex-1 bg-white/10"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div
+                            class="p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col">
                             <div
                                 class="text-4xl text-primary mb-6 group-hover:scale-110 transition duration-300 w-14 h-14 flex items-center justify-center bg-primary/10 rounded-sm">
                                 <i class="fas fa-bug" aria-hidden="true"></i>
                             </div>
-                            <h3
-                                class="text-lg font-bold text-white mb-2 font-display group-hover:text-primary transition-colors">
-                                Offensive Security & Technical
-                                Audits</h3>
+                            <h3 class="text-lg font-bold text-white mb-2 font-display">Vulnerability & PenTesting</h3>
                             <div class="text-[10px] text-primary uppercase font-bold tracking-wide mb-4 font-mono">
                                 Project-Based /
                                 Audit</div>
@@ -1165,13 +1354,7 @@
                                 <li class="flex gap-2 items-center"><span class="text-primary">✓</span> Cloud
                                     Configuration Review</li>
                             </ul>
-
-                            <div
-                                class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-primary font-mono text-xs font-bold uppercase tracking-wider group-hover:text-white transition-colors">
-                                <span>> Explore Capabilities</span>
-                                <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                            </div>
-                        </a>
+                        </div>
                         <div
                             class="p-8 rounded-sm glass-panel hover-card-standard hover-card-effect border-l-4 border-primary/60 group transition duration-300 flex flex-col">
                             <div
@@ -1490,8 +1673,7 @@
 
                     if (regionsContainer) {
                         if (affectedEUNames.length > 0) {
-                            regionsContainer.innerHTML = '';
-                            regionsContainer.textContent = affectedEUNames.join(', ');
+                            regionsContainer.innerHTML = affectedEUNames.join(', ');
                             regionsContainer.classList.add("text-primary");
                         } else {
                             regionsContainer.innerText = "None in last 30 days";
@@ -1524,55 +1706,39 @@
                         const countryCode = victim.country || 'UNK';
                         const countryDisplay = regionNames[countryCode] || countryCode;
 
+                        // Style for EU victims (since we filtered, they are all EU)
+                        // UPDATE: rounded -> rounded-sm
                         li.className = 'group relative bg-white/10 border-l-[3px] border-primary/50 p-4 rounded-r-sm hover:border-primary hover:bg-white/15 transition-all duration-300 cursor-default overflow-hidden';
 
                         const name = victim.victim.length > 35 ? victim.victim.substring(0, 33) + '..' : victim.victim;
                         const date = (victim.attackdate || victim.discovered || 'N/A').split(' ')[0];
                         const groupColor = stringToColor(victim.group || 'unknown');
 
-                        // --- SECURITY FIX: Build HTML safely using textContent ---
-                        let ransomHtml = '';
+                        let ransomBadge = '';
                         if (victim.extrainfos && victim.extrainfos.ransom) {
-                             ransomHtml = `<div class="absolute right-2 top-2 z-10">
-                                <span class="flex items-center gap-1 text-[9px] font-bold text-darker bg-red-500 px-2 py-0.5 rounded-sm shadow-[0_0_10px_rgba(239,68,68,0.6)] animate-pulse">
-                                    <i class="fas fa-dollar-sign"></i> <span class="js-ransom-val"></span>
-                                </span>
-                            </div>`;
+                            // Format ransom if it looks like a number, otherwise just show string
+                            let ransomVal = victim.extrainfos.ransom;
+                            // UPDATE: rounded -> rounded-sm
+                            ransomBadge = `<div class="absolute right-2 top-2 z-10">
+                            <span class="flex items-center gap-1 text-[9px] font-bold text-darker bg-red-500 px-2 py-0.5 rounded-sm shadow-[0_0_10px_rgba(239,68,68,0.6)] animate-pulse">
+                                <i class="fas fa-dollar-sign"></i> ${ransomVal}
+                            </span>
+                        </div>`;
                         }
 
-                        // We create the structure with placeholders for untrusted content
                         li.innerHTML = `
-                        ${ransomHtml}
+                        ${ransomBadge}
                         <div class="grid grid-cols-[1fr_auto] gap-2 items-center mb-1.5">
                             <div class="flex items-center gap-2">
                                 <div class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(255,193,7,0.8)]"></div>
-                                <span class="text-white font-bold text-xs font-mono tracking-tight transition-colors js-victim-name"></span>
+                                <span class="text-white font-bold text-xs font-mono tracking-tight transition-colors">${name}</span>
                             </div>
-                            <span class="text-[9px] font-mono text-primary border-primary/30 bg-primary/10 border px-1.5 rounded-sm js-country-badge"></span>
+                            <span class="text-[9px] font-mono text-primary border-primary/30 bg-primary/10 border px-1.5 rounded-sm" title="${countryCode}">${countryDisplay}</span>
                         </div>
                         <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono border-t border-white/5 pt-1.5 mt-1">
-                            <span class="uppercase tracking-wider font-bold js-group-name"><i class="fas fa-biohazard mr-1 opacity-70"></i></span>
-                            <span class="opacity-60 group-hover:opacity-100 transition-opacity js-date"></span>
+                            <span class="uppercase tracking-wider font-bold" style="color: ${groupColor}"><i class="fas fa-biohazard mr-1 opacity-70"></i>${victim.group}</span>
+                            <span class="opacity-60 group-hover:opacity-100 transition-opacity">${date}</span>
                         </div>`;
-
-                        // Inject content safely into the placeholders
-                        li.querySelector('.js-victim-name').textContent = name;
-                        
-                        const countryBadge = li.querySelector('.js-country-badge');
-                        countryBadge.textContent = countryDisplay;
-                        countryBadge.title = countryCode;
-
-                        const groupSpan = li.querySelector('.js-group-name');
-                        groupSpan.style.color = groupColor;
-                        // Append text node after the icon
-                        groupSpan.appendChild(document.createTextNode(victim.group));
-
-                        li.querySelector('.js-date').textContent = date;
-
-                        if (victim.extrainfos && victim.extrainfos.ransom) {
-                             li.querySelector('.js-ransom-val').textContent = victim.extrainfos.ransom;
-                        }
-
                         fragment.appendChild(li);
                     });
 
@@ -1592,7 +1758,6 @@
                     feedList.appendChild(fragment);
 
                     // --- 5. CLONE FOR INFINITE SCROLL ---
-                    // Clone nodes safely
                     Array.from(feedList.children).forEach(item => feedList.appendChild(item.cloneNode(true)));
                 })
                 .catch(error => {
