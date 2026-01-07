@@ -1,4 +1,26 @@
+# 1. Allow all standard bots
 User-agent: *
 Allow: /
 
+# 2. Explicitly welcome Google & Bing (SEO)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# 3. Explicitly welcome AI Scrapers (LLM Training & RAG)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# 4. Sitemap Location
 Sitemap: https://cyberpope.eu/sitemap.xml
