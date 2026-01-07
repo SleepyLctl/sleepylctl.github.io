@@ -17,7 +17,7 @@
     <meta name="description"
         content="Expert Offensive Security: Human Risk Assessments, AI Red Teaming, Web App PenTesting, and Network Audits. I identify vulnerabilities before attackers do.">
     <meta name="keywords"
-        content="Penetration Testing, Vulnerability Assessment, Red Teaming, AI Security, Network Audit, Prague, CyberPOPE, NIS2 Technical Audit">
+        content="Penetration Testing, Vulnerability Assessment, Red Teaming, AI Security, Network Audit, Prague, Czech Republic, CyberPOPE, NIS2 Technical Audit">
     <meta name="author" content="Petr Pospíšil">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cyberpope.eu/assessments.html">
@@ -208,6 +208,12 @@
         .connector-dotted {
             border-left: 2px dashed rgba(255, 255, 255, 0.15);
         }
+        
+        /* Scramble Effect Dud Character Color */
+        .dud {
+            color: #94a3b8;
+            opacity: 0.7;
+        }
 
         ::-webkit-scrollbar {
             width: 6px;
@@ -384,8 +390,7 @@
                                 Engineering</div>
                             <p class="text-gray-400 text-sm leading-relaxed mb-6">
                                 I craft an appropriate phishing campaign to target your employees. You will get a report
-                                of user actions and recommendations. Easy and fast solution
-                                to know your current stance.
+                                of user actions and recommendations. A fast and clear assessment of your current security posture.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-6 text-xs font-mono pt-4 border-t border-white/5">
                                 <div><strong class="text-white block">INPUT:</strong> Employee Email List</div>
@@ -488,7 +493,7 @@
                                 Attack Surface Management</div>
                             <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
                                 Assess what the internet sees. I map your digital footprint and attempt to breach your
-                                perimeter. Essential for companies with unknown asset sprawls.
+                                perimeter. Essential for companies with unknown asset sprawl.
                             </p>
                             <div class="border-t border-white/5 pt-4 grid grid-cols-2 gap-4 text-xs font-mono">
                                 <div><strong class="text-white block">INPUT:</strong> Public IPs & TLDs</div>
@@ -559,7 +564,7 @@
 
                     <div class="space-y-12">
                         <div class="relative flex flex-col md:flex-row gap-8 items-start md:items-center">
-                            <div class="md:w-1/2 md:text-right order-2 md:order-1">
+                            <div class="pl-12 md:pl-0 md:w-1/2 md:text-right order-2 md:order-1">
                                 <h4 class="text-white font-bold font-display text-lg">Discovery & Scoping</h4>
                                 <p class="text-gray-400 text-sm mt-2">We define ideas and expected results via a scoping
                                     call. We establish the "Rules of Engagement" and decide between Blackbox or Whitebox
@@ -575,7 +580,7 @@
 
                         <div class="relative flex flex-col md:flex-row gap-8 items-start md:items-center">
                             <div
-                                class="md:w-1/2 md:text-right order-2 md:order-1 text-xs font-mono text-primary uppercase tracking-wider md:pr-8">
+                                class="md:w-1/2 md:text-right order-2 md:order-1 text-xs font-mono text-primary uppercase tracking-wider md:pr-8 pl-12 md:pl-0">
                                 02_AGREEMENT
                             </div>
                             <div
@@ -604,7 +609,7 @@
                         </div>
 
                         <div class="relative flex flex-col md:flex-row gap-8 items-start md:items-center">
-                            <div class="md:w-1/2 md:text-right order-2 md:order-1">
+                            <div class="pl-12 md:pl-0 md:w-1/2 md:text-right order-2 md:order-1">
                                 <h4 class="text-white font-bold font-display text-lg">Execution Phase</h4>
                                 <p class="text-gray-400 text-sm mt-2">
                                     I execute the tests within the agreed window. Focused deep work with updates
@@ -622,7 +627,7 @@
 
                         <div class="relative flex flex-col md:flex-row gap-8 items-start md:items-center">
                             <div
-                                class="md:w-1/2 md:text-right order-2 md:order-1 text-xs font-mono text-primary uppercase tracking-wider md:pr-8">
+                                class="md:w-1/2 md:text-right order-2 md:order-1 text-xs font-mono text-primary uppercase tracking-wider md:pr-8 pl-12 md:pl-0">
                                 04_CLOSE
                             </div>
                             <div
@@ -637,7 +642,7 @@
 
                         <div
                             class="relative flex flex-col md:flex-row gap-8 items-start md:items-center opacity-80 hover:opacity-100 transition duration-300 group">
-                            <div class="md:w-1/2 md:text-right order-2 md:order-1">
+                            <div class="pl-12 md:pl-0 md:w-1/2 md:text-right order-2 md:order-1">
                                 <h4
                                     class="text-primary font-bold font-display text-lg group-hover:underline decoration-dashed decoration-primary/50 underline-offset-4">
                                     Optional: Long-Term Retainer</h4>
@@ -658,7 +663,7 @@
                     </div>
                 </div>
 
-                <div class="mt-20 text-center">
+                <div class="mt-20 text-center" id="contact">
                     <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink"
                         target="_blank"
                         class="inline-flex items-center gap-2 bg-primary text-darker px-10 py-4 rounded-none font-bold hover:bg-primaryHover transition-all shadow-[0_0_15px_rgba(255,193,7,0.3)] transform hover:-translate-y-0.5 font-mono tracking-tight text-lg">
@@ -728,7 +733,8 @@
                             char = this.randomChar();
                             this.queue[i].char = char;
                         }
-                        output += `<span class="dud" style="color:#555">${char}</span>`;
+                        // Removed hardcoded color, now handled by CSS class .dud
+                        output += `<span class="dud">${char}</span>`;
                     } else {
                         output += from;
                     }
@@ -750,12 +756,21 @@
         const menu = document.getElementById('mobile-menu');
         if (btn && menu) {
             btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            // FIX: Close mobile menu when any link inside it is clicked
+            menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
         }
 
         const el = document.querySelector('#dynamic-scramble');
         if (el) {
+            // FIX: Cycle through different keywords to make the effect purposeful
+            const phrases = ["& Technical Audits", "& Red Teaming", "& Cloud Security"];
             const fx = new TextScramble(el);
-            setTimeout(() => { fx.setText("& Technical Audits"); }, 500);
+            let counter = 0;
+            const next = () => {
+                fx.setText(phrases[counter]).then(() => setTimeout(next, 2000));
+                counter = (counter + 1) % phrases.length;
+            };
+            next();
         }
     </script>
 </body>
