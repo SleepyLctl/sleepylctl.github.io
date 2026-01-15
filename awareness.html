@@ -39,6 +39,8 @@
     <link rel="icon" type="image/png" href="fav/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="fav/favicon.svg" />
     <link rel="shortcut icon" href="fav/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
+    <link rel="manifest" href="fav/site.webmanifest" />
     <meta name="theme-color" content="#020617">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,98 +50,6 @@
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-
-
-    <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        .font-display {
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: -0.02em;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        section {
-            scroll-margin-top: 100px;
-            position: relative;
-        }
-
-        /* UPDATED: Premium Glass Panel with Cut Glass Effect */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-        }
-
-        /* UPDATED: Sharper Terminal Window */
-        .terminal-window {
-            @apply glass-panel rounded-none overflow-hidden transition-all duration-300;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .terminal-header {
-            @apply bg-black/40 h-8 flex items-center px-3 gap-1.5 border-b border-white/5 select-none;
-        }
-
-        .window-dot {
-            @apply w-2.5 h-2.5 rounded-full;
-        }
-
-        .flow-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transform: translateX(-50%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .hover-card-effect {
-            transition: all 0.3s ease;
-        }
-
-        .hover-card-effect:hover {
-            transform: translateY(-5px);
-            background: rgba(30, 41, 59, 0.8);
-            border-color: rgba(255, 193, 7, 0.3);
-            box-shadow: 0 10px 40px -10px rgba(255, 193, 7, 0.15);
-        }
-
-        /* Standardized Gold Hover for all tiers */
-        .expert-card:hover {
-            border-color: rgba(255, 193, 7, 0.8) !important;
-            box-shadow: 0 0 40px rgba(255, 193, 7, 0.25) !important;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #020617;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FFC107;
-        }
-    </style>
 </head>
 
 <body
@@ -169,7 +79,7 @@
                 <div class="relative group">
                     <button
                         class="flex items-center gap-1 text-gray-300 group-hover:text-primary transition-colors focus:outline-none py-4">
-                        Services <i class="fas fa-chevron-down text-[10px] pt-0.5"></i>
+                        Solutions <i class="fas fa-chevron-down text-[10px] pt-0.5"></i>
                     </button>
 
                     <div
@@ -178,17 +88,29 @@
                             class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-t border-l border-white/10 rotate-45">
                         </div>
                         <div class="relative bg-surface rounded-sm overflow-hidden z-10 flex flex-col">
+                            <a href="strategy.html"
+                                class="block px-5 py-4 hover:bg-white/5 border-b border-white/5 group/item">
+                                <div class="text-white font-bold mb-1 group-hover/item:text-primary transition">
+                                    Strategy & CISO</div>
+                                <div class="text-[10px] text-gray-400 leading-tight">Strategic & GRC Services</div>
+                            </a>
                             <a href="assessments.html"
                                 class="block px-5 py-4 hover:bg-white/5 border-b border-white/5 group/item">
                                 <div class="text-white font-bold mb-1 group-hover/item:text-primary transition">
-                                    Technical Audits & PenTesting</div>
-                                <div class="text-[10px] text-gray-400 leading-tight">Offensive Security & Red Teaming
+                                    Security Testing</div>
+                                <div class="text-[10px] text-gray-400 leading-tight">Penetration Testing & Audits
                                 </div>
                             </a>
-                            <a href="awareness.html" class="block px-5 py-4 hover:bg-white/5 group/item">
+                            <a href="awareness.html"
+                                class="block px-5 py-4 hover:bg-white/5 group/item border-b border-white/5">
                                 <div class="text-white font-bold mb-1 group-hover/item:text-primary transition">
-                                    Awareness as a Service</div>
+                                    Security Awareness</div>
                                 <div class="text-[10px] text-gray-400 leading-tight">Human Risk Management</div>
+                            </a>
+                            <a href="trainings.html" class="block px-5 py-4 hover:bg-white/5 group/item">
+                                <div class="text-white font-bold mb-1 group-hover/item:text-primary transition">
+                                    Technical Training</div>
+                                <div class="text-[10px] text-gray-400 leading-tight">Making the Complex Actionable</div>
                             </a>
                         </div>
                     </div>
@@ -220,14 +142,22 @@
                     class="block text-gray-300 hover:text-primary font-bold uppercase border-b border-white/5 pb-2">>
                     Home</a>
                 <div class="pb-2 border-b border-white/5">
-                    <div class="text-gray-500 text-xs mb-2 uppercase font-bold tracking-wider">Services</div>
+                    <div class="text-gray-500 text-xs mb-2 uppercase font-bold tracking-wider">Solutions</div>
+                    <a href="strategy.html"
+                        class="block text-white pl-4 py-2 hover:text-primary transition flex items-center gap-2">
+                        <i class="fas fa-flag-checkered text-xs text-primary/50"></i> Strategy & CISO
+                    </a>
                     <a href="assessments.html"
                         class="block text-white pl-4 py-2 hover:text-primary transition flex items-center gap-2">
-                        <i class="fas fa-bug text-xs text-primary/50"></i> Technical Audits & PenTesting
+                        <i class="fas fa-bug text-xs text-primary/50"></i> Security Testing
                     </a>
                     <a href="awareness.html"
                         class="block text-white pl-4 py-2 hover:text-primary transition flex items-center gap-2">
-                        <i class="fas fa-brain text-xs text-primary/50"></i> Awareness as a Service
+                        <i class="fas fa-brain text-xs text-primary/50"></i> Security Awareness
+                    </a>
+                    <a href="trainings.html"
+                        class="block text-white pl-4 py-2 hover:text-primary transition flex items-center gap-2">
+                        <i class="fas fa-chalkboard-teacher text-xs text-primary/50"></i> Technical Training
                     </a>
                 </div>
                 <a href="https://outlook.office.com/bookwithme/user/c402592dff064ab58891e7f30b6cb434@cyberpope.eu/meetingtype/LQ3jAGUT_Um6HI85SCgi6Q2?anonymous&ismsaljsauthenabled&ep=mlink"
@@ -583,9 +513,11 @@
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        if (btn && menu) {
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            // FIX: Close mobile menu when any link inside it is clicked
+            menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+        }
     </script>
 </body>
 
